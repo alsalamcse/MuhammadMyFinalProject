@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "221739210610-o778p97dlvcscnq1an4miugf13ss5l93.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mousa.muhammad.muhammadmyfinalproject",
+            "certificate_hash": "8d4e87598d212bdb282d05faa7766dc9c486dbdf"
+          }
+        },
+        {
           "client_id": "221739210610-jjvo0cb8mr3sjoglg2035905ff6qvk88.apps.googleusercontent.com",
           "client_type": 3
         }
