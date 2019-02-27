@@ -17,8 +17,9 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignInActivity extends AppCompatActivity {
 
-    private EditText edId;
+    private EditText edId, etPassWord;
     private Button btnLogIN;
+
 
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;//user
@@ -29,8 +30,10 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         edId=(EditText)findViewById(R.id .etId) ;
+        etPassWord=(EditText)findViewById(R.id .edPassWord) ;
 
         btnLogIN=(Button)findViewById(R.id .btnLogIn) ;
+
 
 
 
@@ -59,13 +62,15 @@ public class SignInActivity extends AppCompatActivity {
     private void dataHandler()
     {
         String id=edId.getText().toString();
+        String passw=etPassWord.getText().toString();
+        signIn(id,passw);
 
-        signIn(id);
+
     }
 
-    private void signIn(String id) {
+    private void signIn(String id,String passw) {
         FirebaseAuth auth=FirebaseAuth.getInstance();
-        auth.signInWithEmailAndPassword(id).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(id,passw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())

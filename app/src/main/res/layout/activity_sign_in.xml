@@ -21,8 +21,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="ID:" />
+                android:hint="ID:"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edPassWord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="PassWord:"
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/btnLogIn"
