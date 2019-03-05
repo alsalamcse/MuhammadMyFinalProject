@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">MuhammadMyFinalProject</string>
-    <string name="todo">TODO</string>
+    <string name="todo">todo</string>
+    <string name="worker_portfolio">worker_portfolio</string>
+    <string name="contentDescription">contentDescription</string>
 </resources>

@@ -1,3 +1,5 @@
+package com.mousa.muhammad.muhammadmyfinalproject;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,10 +11,6 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.Task;
-import com.mousa.muhammad.muhammadmyfinalproject.MyTask;
-import com.mousa.muhammad.muhammadmyfinalproject.R;
 
 public class TaskAdapter extends ArrayAdapter<MyTask> {
 

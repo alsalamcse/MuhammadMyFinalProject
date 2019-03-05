@@ -10,15 +10,20 @@
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="89dp"
-        app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="58dp" />
+        android:contentDescription="@string/todo"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:text="Worker Portfolio"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:text="@string/worker_portfolio"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

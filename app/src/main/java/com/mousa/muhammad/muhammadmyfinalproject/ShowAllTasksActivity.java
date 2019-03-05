@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+
 public class ShowAllTasksActivity extends AppCompatActivity {
 
     private ListView lvTasks;
@@ -15,6 +16,6 @@ public class ShowAllTasksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_tasks);
 
-        lvTasks=findViewById(R.id.);
+      //  lvTasks=findViewById(R.id.);
     }
 }
