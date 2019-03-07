@@ -6,24 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".PortfolioActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="89dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:text="@string/worker_portfolio"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:baselineAligned="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvWorkerPortfolio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:text="@string/worker_portfolio"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivWorker"
+                android:layout_width="185dp"
+                android:layout_height="89dp"
+                android:baselineAligned="false"
+                android:contentDescription="@string/todo"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+            <TextView
+                android:id="@+id/tvWorkerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textSize="18sp"
+                tools:text="Worker Name:" />
+
+            <EditText
+                android:id="@+id/edtWorkerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Worker Name"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvWorkerId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textSize="18sp"
+                tools:text="Worker Id:" />
+
+            <EditText
+                android:id="@+id/edtWorkerId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Worker Id"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvWorkerBirthday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textSize="18sp"
+                tools:text="Worker Birthday:" />
+
+            <EditText
+                android:id="@+id/edtWorkerBirthday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Worker Birthday"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvVactionDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/textview"
+                tools:text="Vaction Days:" />
+
+            <EditText
+                android:id="@+id/edtVactionDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Vaction Days"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvWorkingDays"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textSize="18sp"
+                tools:text="Working Days:" />
+
+            <EditText
+                android:id="@+id/edtWorkingDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Working Days"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

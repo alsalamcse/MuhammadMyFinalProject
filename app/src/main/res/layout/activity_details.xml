@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDetailsMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="24sp"
+                tools:text="Details of the month" />
+
+            <TextView
+                android:id="@+id/tvTotalHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                tools:text="Total Hours:" />
+
+            <EditText
+                android:id="@+id/edtTotalHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Total Hours"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvPricetoHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="18sp"
+                tools:text=" Price To Hour:" />
+
+            <EditText
+                android:id="@+id/edtPricetoHour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Price to Hour"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvVactionDays2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textSize="18sp"
+                tools:text="Vaction Days:" />
+
+            <EditText
+                android:id="@+id/edtVactionDays2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Vaction Days"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvWorkingDays2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/textview"
+                android:textSize="18sp"
+                tools:text="Working Days:" />
+
+            <EditText
+                android:id="@+id/edtWorkingDays2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Working Days"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/tvMonthlySalary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Expected Monthly Salary :"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtMonthlySalary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Expected Monthly Salary "
+                android:inputType="textPersonName" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
