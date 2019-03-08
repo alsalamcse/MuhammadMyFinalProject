@@ -19,7 +19,8 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".ShowAllTasksActivity" />
         <activity android:name=".PortfolioActivity" />
-        <activity android:name=".DetailsActivity"></activity>
+        <activity android:name=".DetailsActivity" />
+        <activity android:name=".ScheduleActivity"></activity>
     </application>
 
 </manifest>

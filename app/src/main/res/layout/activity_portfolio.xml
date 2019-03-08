@@ -65,7 +65,7 @@
 
             <TextView
                 android:id="@+id/tvWorkerId"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/textview"
                 android:textSize="18sp"
@@ -81,7 +81,7 @@
 
             <TextView
                 android:id="@+id/tvWorkerBirthday"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/textview"
                 android:textSize="18sp"
@@ -97,10 +97,10 @@
 
             <TextView
                 android:id="@+id/tvVactionDays"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
                 android:text="@string/textview"
+                android:textSize="18sp"
                 tools:text="Vaction Days:" />
 
             <EditText
@@ -113,7 +113,7 @@
 
             <TextView
                 android:id="@+id/tvWorkingDays"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/textview"
                 android:textSize="18sp"
@@ -126,6 +126,12 @@
                 android:ems="10"
                 android:hint="Working Days"
                 android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btnSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Schedule" />
         </LinearLayout>
     </LinearLayout>
 

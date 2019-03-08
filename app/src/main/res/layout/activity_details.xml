@@ -9,7 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="235dp"
+        tools:layout_editor_absoluteY="71dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -102,6 +104,12 @@
                 android:ems="10"
                 android:hint="Expected Monthly Salary "
                 android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btnMonthCoupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Month Coupon" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
