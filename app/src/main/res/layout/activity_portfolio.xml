@@ -29,7 +29,9 @@
                 android:layout_height="wrap_content"
                 android:baselineAligned="false"
                 android:text="@string/worker_portfolio"
+                android:textColor="#0489B1"
                 android:textSize="24sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +53,7 @@
                 android:id="@+id/tvWorkerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textview"
+                android:text="Worker Name"
                 android:textSize="18sp"
                 tools:text="Worker Name:" />
 
@@ -67,7 +69,7 @@
                 android:id="@+id/tvWorkerId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textview"
+                android:text="Worker Id"
                 android:textSize="18sp"
                 tools:text="Worker Id:" />
 
@@ -83,7 +85,7 @@
                 android:id="@+id/tvWorkerBirthday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textview"
+                android:text="Worker Birthday:"
                 android:textSize="18sp"
                 tools:text="Worker Birthday:" />
 
@@ -99,7 +101,7 @@
                 android:id="@+id/tvVactionDays"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textview"
+                android:text="Vaction Days:"
                 android:textSize="18sp"
                 tools:text="Vaction Days:" />
 
@@ -115,7 +117,7 @@
                 android:id="@+id/tvWorkingDays"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textview"
+                android:text="Working Days:"
                 android:textSize="18sp"
                 tools:text="Working Days:" />
 
@@ -128,10 +130,10 @@
                 android:inputType="textPersonName" />
 
             <Button
-                android:id="@+id/btnSchedule"
+                android:id="@+id/btnDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Schedule" />
+                android:text="Details" />
         </LinearLayout>
     </LinearLayout>
 

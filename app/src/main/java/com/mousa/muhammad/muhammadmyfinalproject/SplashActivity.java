@@ -3,13 +3,22 @@ package com.mousa.muhammad.muhammadmyfinalproject;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
+
+    private TextView tvWelcome;
+    private ImageView ivWelcome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        ivWelcome=(ImageView)findViewById(R.id.ivWelcome);
+        tvWelcome=(TextView) findViewById(R.id .tvWelcome) ;
     }
     @Override
     protected void onResume() {

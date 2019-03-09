@@ -37,24 +37,24 @@ public class TaskAdapter extends ArrayAdapter<MyTask> {
 //        SeekBar skpImp = convertView.findViewById(R.id.skbNees);
 //        ImageButton ibDel = convertView.findViewById(R.id.ibDel);
 
-        TextView tvTitle = convertView.findViewById(R.id.textStart);
-        TextView tvText = convertView.findViewById(R.id.textView);
-        SeekBar skbNees = convertView.findViewById(R.id.textView);
-        SeekBar skpImp = convertView.findViewById(R.id.textView);
-        ImageButton ibDel = convertView.findViewById(R.id.icon_only);
-        // put the data of the object on the view
-        tvText.setText(m.getText());
-        tvTitle.setText(m.getTitle());
-
-        skpImp.setProgress(m.getImportant());
-        skbNees.setProgress(m.getImportant());
-
-        ibDel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Del",Toast.LENGTH_SHORT).show();
-            }
-        });
+//        TextView tvTitle = convertView.findViewById(R.id.textStart);
+//        TextView tvText = convertView.findViewById(R.id.textView);
+//        SeekBar skbNees = convertView.findViewById(R.id.textView);
+//        SeekBar skpImp = convertView.findViewById(R.id.textView);
+//        ImageButton ibDel = convertView.findViewById(R.id.icon_only);
+//        // put the data of the object on the view
+//        tvText.setText(m.getText());
+//        tvTitle.setText(m.getTitle());
+//
+//        skpImp.setProgress(m.getImportant());
+//        skbNees.setProgress(m.getImportant());
+//
+//        ibDel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getContext(), "Del",Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         return super.getView(position, convertView, parent);
     }

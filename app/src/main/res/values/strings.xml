@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MuhammadMyFinalProject</string>
     <string name="todo">todo</string>
-    <string name="worker_portfolio">worker_portfolio</string>
+    <string name="worker_portfolio">Worker Profile</string>
     <string name="contentDescription">contentDescription</string>
-    <string name="textview">TextView</string>
+    <string name="textview">muhammad</string>
     <string name="name">Name</string>
 </resources>
