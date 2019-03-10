@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:baselineAligned="false"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="ExtraText">
 
             <TextView
                 android:id="@+id/tvWorkerPortfolio"
@@ -32,6 +33,7 @@
                 android:textColor="#0489B1"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                android:layout_marginLeft="100dp"
                 app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +49,8 @@
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
             <TextView
@@ -55,6 +59,8 @@
                 android:layout_height="wrap_content"
                 android:text="Worker Name"
                 android:textSize="18sp"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 tools:text="Worker Name:" />
 
             <EditText
@@ -63,6 +69,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Worker Name"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -70,6 +78,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Worker Id"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 android:textSize="18sp"
                 tools:text="Worker Id:" />
 
@@ -78,6 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 android:hint="Worker Id"
                 android:inputType="textPersonName" />
 
@@ -87,6 +99,8 @@
                 android:layout_height="wrap_content"
                 android:text="Worker Birthday:"
                 android:textSize="18sp"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 tools:text="Worker Birthday:" />
 
             <EditText
@@ -95,6 +109,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Worker Birthday"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -103,6 +119,8 @@
                 android:layout_height="wrap_content"
                 android:text="Vaction Days:"
                 android:textSize="18sp"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 tools:text="Vaction Days:" />
 
             <EditText
@@ -111,6 +129,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Vaction Days"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -119,6 +139,8 @@
                 android:layout_height="wrap_content"
                 android:text="Working Days:"
                 android:textSize="18sp"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 tools:text="Working Days:" />
 
             <EditText
@@ -127,12 +149,15 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Working Days"
+                android:layout_marginLeft="0dp"
+                android:layout_gravity="left"
                 android:inputType="textPersonName" />
 
             <Button
                 android:id="@+id/btnDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="Details" />
         </LinearLayout>
     </LinearLayout>

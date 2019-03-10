@@ -22,6 +22,8 @@
                 android:layout_height="77dp"
                 android:text="Month Coupon"
                 android:textColor="#0489B1"
+                android:layout_marginLeft="100dp"
+                android:layout_gravity="left"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 

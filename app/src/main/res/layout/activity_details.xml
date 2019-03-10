@@ -20,8 +20,10 @@
                         android:id="@+id/tvDetailsMonth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="70dp"
+                        android:layout_gravity="left"
                         android:gravity="left"
-                        android:text="Details of the month"
+                        android:text="Details of the Month"
                         android:textColor="#0489B1"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -33,6 +35,8 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
                             android:text="Total Hours:"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:textSize="18sp"
                             tools:text="Total Hours:" />
 
@@ -42,6 +46,8 @@
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:hint="Total Hours"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:inputType="textPersonName" />
 
                         <TextView
@@ -50,6 +56,8 @@
                             android:layout_height="wrap_content"
                             android:text="Price To Hour:"
                             android:textSize="18sp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             tools:text=" Price To Hour:" />
 
                         <EditText
@@ -58,6 +66,8 @@
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:hint="Price to Hour"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:inputType="textPersonName" />
 
                         <TextView
@@ -65,6 +75,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Vaction Days:"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:textSize="18sp"
                             tools:text="Vaction Days:" />
 
@@ -73,6 +85,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="10"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:hint="Vaction Days"
                             android:inputType="textPersonName" />
 
@@ -82,6 +96,8 @@
                             android:layout_height="wrap_content"
                             android:text="Working Days:"
                             android:textSize="18sp"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             tools:text="Working Days:" />
 
                         <EditText
@@ -89,6 +105,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="10"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:hint="Working Days"
                             android:inputType="textPersonName" />
 
@@ -96,6 +114,8 @@
                             android:id="@+id/tvMonthlySalary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:text="Expected Monthly Salary :"
                             android:textSize="18sp" />
 
@@ -104,6 +124,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ems="10"
+                            android:layout_marginLeft="0dp"
+                            android:layout_gravity="left"
                             android:hint="Expected Monthly Salary "
                             android:inputType="textPersonName" />
 
@@ -112,6 +134,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Month Coupon"
+
                         tools:text="Month Coupon" />
                 </LinearLayout>
         </LinearLayout>
