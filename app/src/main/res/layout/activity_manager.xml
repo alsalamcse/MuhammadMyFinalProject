@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManagerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnSchedule"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Schedule"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="190dp" />
+
+            <Button
+                android:id="@+id/btnMyWorkers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="My Workers"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="346dp" />
+
+            <Button
+                android:id="@+id/btnAddWorker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSchedule"
+                android:layout_gravity="left"
+                android:layout_toEndOf="@+id/btnMyProfile"
+                android:layout_toRightOf="@+id/btnMyProfile"
+                android:text="Add Worker"
+                tools:layout_editor_absoluteX="144dp"
+                tools:layout_editor_absoluteY="262dp"
+                tools:text="Add Worker" />
+
+            <Button
+                android:id="@+id/btnMyProfile"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_below="@+id/tvSchedule"
+                android:layout_gravity="left"
+                android:text="My Profile"
+                tools:layout_editor_absoluteX="145dp"
+                tools:layout_editor_absoluteY="108dp"
+                tools:text="My Profile" />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -21,7 +21,9 @@
         <activity android:name=".PortfolioActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".ScheduleActivity" />
-        <activity android:name=".CouponActivity"></activity>
+        <activity android:name=".CouponActivity" />
+        <activity android:name=".MyWorkersActivity" />
+        <activity android:name=".ManagerActivity"></activity>
     </application>
 
 </manifest>

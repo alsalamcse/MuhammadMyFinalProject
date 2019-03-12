@@ -153,12 +153,34 @@
                 android:layout_gravity="left"
                 android:inputType="textPersonName" />
 
-            <Button
-                android:id="@+id/btnDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                android:text="Details" />
+                <Button
+                    android:id="@+id/btnDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_weight="1"
+                    android:text="Details" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5" />
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Save"
+                    tools:layout_editor_absoluteX="294dp"
+                    tools:layout_editor_absoluteY="471dp" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

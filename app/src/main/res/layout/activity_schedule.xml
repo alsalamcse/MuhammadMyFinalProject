@@ -11,9 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ThirdActivity"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <TextView
             android:id="@+id/tvSchedule"
@@ -32,41 +32,20 @@
             android:id="@+id/spnMonth"
             android:layout_width="wrap_content"
             android:layout_height="38dp"
-            android:layout_alignParentEnd="true"
             android:layout_below="@+id/tvSchedule"
-            android:layout_marginEnd="45dp" />
-
-        <Button
-            android:id="@+id/btnAddWorker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvSchedule"
-            android:layout_gravity="left"
-            android:layout_marginLeft="0dp"
-            android:layout_toEndOf="@+id/btnMyProfile"
-            android:layout_toRightOf="@+id/btnMyProfile"
-            android:text="Add Worker"
-            tools:text="Add Worker" />
-
-        <Button
-            android:id="@+id/btnMyProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvSchedule"
-            android:layout_gravity="left"
-            android:layout_marginLeft="0dp"
-            android:text="My Profile"
-            tools:text="My Profile" />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="right" />
 
         <TextView
             android:id="@+id/tvMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spnMonth"
-            android:text="Month: March"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#7401DF"
-            android:textSize="15sp" />
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/tvSchedule"
+            android:layout_gravity="left"
+            android:text="Month: "
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="24sp" />
 
 
         <TableLayout
