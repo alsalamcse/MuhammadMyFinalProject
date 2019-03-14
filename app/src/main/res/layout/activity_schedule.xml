@@ -45,7 +45,8 @@
             android:layout_gravity="left"
             android:text="Month: "
             android:textColor="@android:color/holo_red_dark"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:layout_alignParentRight="true" />
 
 
         <TableLayout
@@ -586,6 +587,14 @@
                     android:text="" />
             </TableRow>
         </TableLayout>
+
+        <Button
+            android:id="@+id/btnMyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/spnMonth"
+            android:text="My Profile"
+            tools:text="My Profile" />
 
 
     </RelativeLayout>

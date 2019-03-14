@@ -23,7 +23,8 @@
         <activity android:name=".ScheduleActivity" />
         <activity android:name=".CouponActivity" />
         <activity android:name=".MyWorkersActivity" />
-        <activity android:name=".ManagerActivity"></activity>
+        <activity android:name=".ManagerActivity" />
+        <activity android:name=".MyProfileActivity"></activity>
     </application>
 
 </manifest>

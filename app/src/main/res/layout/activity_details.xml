@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".DetailsActivity">
 
-        <LinearLayout
+    <Spinner
+        android:id="@+id/spnMonth1"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="259dp"
+        tools:layout_editor_absoluteY="36dp"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
