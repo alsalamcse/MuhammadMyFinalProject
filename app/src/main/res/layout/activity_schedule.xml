@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -15,17 +20,6 @@
         tools:layout_editor_absoluteX="290dp"
         tools:layout_editor_absoluteY="0dp">
 
-        <Button
-            android:id="@+id/btngo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/spnMonth"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="13dp"
-            android:onClick="onClick"
-            android:text="Go"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="13dp" />
 
         <TextView
             android:id="@+id/tvSchedule"
@@ -40,6 +34,11 @@
             android:textColor="#0489B1"
             android:textSize="25sp"
             tools:text="Month Schedule" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
 
         <Spinner
             android:id="@+id/spnMonth"
@@ -65,7 +64,7 @@
         <TableLayout
             android:id="@+id/table"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="437dp"
             android:layout_below="@+id/tvMonth"
             android:layout_marginTop="10dp"
             android:stretchColumns="4">
@@ -90,7 +89,7 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="99dp"
+                    android:layout_width="88dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
                     android:padding="6dp"
@@ -100,7 +99,7 @@
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="99dp"
+                    android:layout_width="94dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
                     android:padding="6dp"
@@ -110,7 +109,7 @@
 
                 <TextView
                     android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
                     android:padding="6dp"
@@ -150,74 +149,11 @@
                     android:text="7" />
             </TableRow>
 
-            <TableRow android:id="@+id/row2">
-
-                <TextView
-                    android:id="@+id/col1row2"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col2row2"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col3row2"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row2"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow android:id="@+id/row3">
-
-                <TextView
-                    android:id="@+id/col1row3"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col2row3"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col3row3"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row3"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
 
         </TableLayout>
-
-
     </RelativeLayout>
 
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

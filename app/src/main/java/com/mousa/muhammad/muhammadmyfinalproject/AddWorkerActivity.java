@@ -19,15 +19,15 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class AddWorkerActivity extends AppCompatActivity {
 
-
-
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;//user
-   // private DatabaseReference databaseReference;
-   private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
 
     private EditText edtFirstName, edtWorkerId, edtWorkerBirthday, edtLastName, edtStartedWork;
     private TextView tvWorkerPortfolio, tvFirstName, tvWorkerId, tvWorkerBirthday, tvLastName, tvStartedWork;
@@ -140,6 +140,11 @@ public class AddWorkerActivity extends AppCompatActivity {
                             databaseReference.child("Users:").child(id).child("workerId").setValue(edtWorkerId.getText().toString());
                             databaseReference.child("Users:").child(id).child("birthday").setValue(edtWorkerBirthday.getText().toString());
                             databaseReference.child("Users:").child(id).child("dateStarted").setValue(edtStartedWork.getText().toString());
+                            Map<String,Object> map = new HashMap<>();
+                            for(int i=1 ; i<13 ; i++){
+                                map.put(""+i,"");
+                            }
+                            databaseReference.child("Users:").child(id).child("Months").updateChildren(map);
 
                             String toastLabel = "Authentication Successful." + "your email: " + email + "your password: " + edtWorkerId.getText().toString();
                             Toast.makeText(AddWorkerActivity.this,toastLabel , Toast.LENGTH_SHORT).show();

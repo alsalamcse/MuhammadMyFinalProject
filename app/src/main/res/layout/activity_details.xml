@@ -137,13 +137,6 @@
                             android:hint="Expected Monthly Salary "
                             android:inputType="textPersonName" />
 
-                    <Button
-                        android:id="@+id/btnMonthCoupon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Month Coupon"
-
-                        tools:text="Month Coupon" />
                 </LinearLayout>
         </LinearLayout>
 </android.support.constraint.ConstraintLayout>

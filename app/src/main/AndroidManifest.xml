@@ -37,28 +37,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ManagerActivity" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".ShowAllTasksActivity" />
         <activity android:name=".AddWorkerActivity" />
+        <activity android:name=".ScheduleActivity" />
+        <activity android:name=".MyWorkersActivity" />
+        <activity android:name=".MainActivity" />
+        <service android:name=".GPS_Service" />
+
         <activity
             android:name=".DetailsActivity"
             android:label="My Details"
             android:parentActivityName=".ScheduleActivity" />
-        <activity android:name=".ScheduleActivity" />
+
         <activity
             android:name=".CouponActivity"
             android:label="Month Coupon"
             android:parentActivityName=".ScheduleActivity" />
-        <activity android:name=".MyWorkersActivity" />
-        <activity android:name=".ManagerActivity" />
+
         <activity
             android:name=".MyProfileActivity"
             android:label="My Profile"
             android:parentActivityName=".ScheduleActivity" />
 
-        <service android:name=".GPS_Service" />
 
-        <activity android:name=".MainActivity"></activity>
-    </application>
+
+        </application>
 
 </manifest>

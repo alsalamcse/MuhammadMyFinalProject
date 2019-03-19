@@ -48,20 +48,19 @@ public class SignInActivity extends AppCompatActivity {
 
         btnLogIN.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-                builder.setMessage("Are you sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dataHandler();
-                    }
-                });
-                builder.setNegativeButton("No", null).setCancelable(false);
-                AlertDialog alert = builder.create();
-                alert.show();
-
-            }
+            public void onClick(View v) {dataHandler();}
+//                final AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
+//                builder.setMessage("Are you sure?");
+//                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//                builder.setNegativeButton("No", null).setCancelable(false);
+//                AlertDialog alert = builder.create();
+//                alert.show();
+//            }
         });
 
         if(!runtime_permissions())
@@ -151,6 +150,7 @@ public class SignInActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
 
                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                    Toast.makeText(SignInActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
 
                     if(id.equals("m@gmail.com")) {
                         Toast.makeText(SignInActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();

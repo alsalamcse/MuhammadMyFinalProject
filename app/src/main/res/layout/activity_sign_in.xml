@@ -16,6 +16,21 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter Your Details To log In"
+                tools:layout_editor_absoluteX="49dp"
+                tools:layout_editor_absoluteY="0dp"
+                tools:text="Enter Your Details To log In" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:orientation="vertical" />
+
             <EditText
                 android:id="@+id/etId"
                 android:layout_width="match_parent"
@@ -32,6 +47,12 @@
                 android:hint="PassWord:"
                 android:inputType="textPassword" />
 
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:orientation="vertical" />
+
             <Button
                 android:id="@+id/btnLogIn"
                 android:layout_width="match_parent"
@@ -47,11 +68,12 @@
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="67dp"
                 android:text="coordinates"
                 tools:text="coordinates" />
 
 
         </LinearLayout>
     </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
