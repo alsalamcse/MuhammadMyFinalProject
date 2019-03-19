@@ -7,9 +7,14 @@
     tools:context=".ManagerActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:id="@+id/linearLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -55,6 +60,17 @@
                 tools:layout_editor_absoluteX="145dp"
                 tools:layout_editor_absoluteY="108dp"
                 tools:text="My Profile" />
+
+            <Button
+                android:id="@+id/btnMonthCoupon"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:layout_below="@+id/tvSchedule"
+                android:layout_gravity="left"
+                android:text="Month Coupon"
+                tools:layout_editor_absoluteX="145dp"
+                tools:layout_editor_absoluteY="108dp"
+                tools:text="Month Coupon" />
         </LinearLayout>
     </LinearLayout>
 

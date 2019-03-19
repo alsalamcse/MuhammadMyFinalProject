@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/MyProfile"
+        android:title="My Profile"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/Details"
+        android:title="My Details"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/Coupon"
+        android:title="Month Coupon"
+        app:showAsAction="never"/>
+
+
+
+</menu>

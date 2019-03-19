@@ -21,11 +21,19 @@ import java.util.ArrayList;
 public class MyWorkersActivity extends AppCompatActivity {
 
     public static ListView list_view;
-    public static String[] NAMES;
+
+//    private Adapter adapter;
+//    public static String[] NAMES;
+
+    // private ISpecimenDIO specimenDIO;
 
     private DatabaseReference databaseReference;
     FirebaseAuth auth;
     FirebaseUser user;
+
+    public void readNames() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    }
 
 
     @Override
@@ -37,60 +45,89 @@ public class MyWorkersActivity extends AppCompatActivity {
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+
+        list_view = (ListView)findViewById(R.id.listView);
         listView();
+//        adapter = new Adapter(getBaseContext(), R.layout.name_list);
+//        list_view.setAdapter(adapter);
+
     }
 
-    public void listView() {
-
-        final String id = user.getUid();
-        DatabaseReference users = databaseReference.child("Users:");
 
 
-        users.addValueEventListener( new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+       // listView();
 
-                ArrayList<String> list = new ArrayList<>();
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference databaseReference = database.getReference();
+//        databaseReference.child("Users:");
+        // databaseReference.addChildEventListener(new ValueEventListener() {
+//            /**
+//             * @param dataSnapshot
+//             */
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+//                for (DataSnapshot child : children) {
+//
+//                }
+//            }
+//
+//
+//        });
+//
+   // }
+
+
+        public void listView() {
+
+//            final String id = user.getUid();
+            DatabaseReference users = databaseReference.child("Users:");
+
+
+            users.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    ArrayList<String> list = new ArrayList<>();
 //                Toast.makeText(MyWorkersActivity.this,dataSnapshot.child("Nn8EcYJ2Qbf8k56TWH2p6zaaugQ2").child("firstName").getValue(String.class) , Toast.LENGTH_SHORT).show();
 
-               for(DataSnapshot it: dataSnapshot.getChildren()){
-                   System.out.println("Id:  " + it.getKey());
-                   list.add( dataSnapshot.child(it.getKey()).child("firstName").getValue(String.class));
+                    for (DataSnapshot it : dataSnapshot.getChildren()) {
+                        System.out.println("Id:  " + it.getKey());
+                        list.add(dataSnapshot.child(it.getKey()).child("firstName").getValue(String.class));
 
-               }
+                    }
+                    String[] NAMES = new String[list.size()];
+                    System.out.println("List size:  " + list.size());
 
-                MyWorkersActivity.NAMES = new String[list.size()];
-                System.out.println("List size:  " + list.size());
-                System.out.println("Names :  " + MyWorkersActivity.NAMES);
+                    for (int i = 0; i < list.size(); i++) {
+                        NAMES[i] = list.get(i);
+                        System.out.println(NAMES[i]);
+                    }
 
-                for(int i=0;i<list.size();i++){
-                    MyWorkersActivity.NAMES[i] = list.get(i);
-                    System.out.println(MyWorkersActivity.NAMES[i]);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<>(MyWorkersActivity.this, R.layout.name_list, NAMES);
+                    list_view.setAdapter(adapter);
+
                 }
 
-            }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
 
 
 
 
-        list_view=(ListView)findViewById(R.id.listView);
 
 
-        ArrayAdapter<String> adapter= new ArrayAdapter<String>(this,R.layout.name_list,NAMES);
-        list_view.setAdapter(adapter);
-        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String value=(String)list_view.getItemAtPosition(position);
-                Toast.makeText(MyWorkersActivity.this,"position :"+ position,Toast.LENGTH_LONG).show();
-            }
-        });
+            list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String value = (String) list_view.getItemAtPosition(position);
+                    Toast.makeText(MyWorkersActivity.this, "position :" + position, Toast.LENGTH_LONG).show();
+                }
+            });
 
+
+        }
     }
-}
+

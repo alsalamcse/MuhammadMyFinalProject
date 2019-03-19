@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mousa.muhammad.muhammadmyfinalproject">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <uses-permission
+        android:name="android.permission.CONTROL_LOCATION_UPDATES"
+        tools:ignore="ProtectedPermissions"></uses-permission>
+    <uses-permission
+        android:name="android.permission.INSTALL_LOCATION_PROVIDER"
+        tools:ignore="ProtectedPermissions"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <permission
+        android:name="com.mousa.muhammad.muhammadmyfinalproject.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.mousa.muhammad.muhammadmyfinalproject.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permissions.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
@@ -19,12 +40,25 @@
         <activity android:name=".SignInActivity" />
         <activity android:name=".ShowAllTasksActivity" />
         <activity android:name=".PortfolioActivity" />
-        <activity android:name=".DetailsActivity" />
+        <activity
+            android:name=".DetailsActivity"
+            android:label="My Details"
+            android:parentActivityName=".ScheduleActivity" />
         <activity android:name=".ScheduleActivity" />
-        <activity android:name=".CouponActivity" />
+        <activity
+            android:name=".CouponActivity"
+            android:label="Month Coupon"
+            android:parentActivityName=".ScheduleActivity" />
         <activity android:name=".MyWorkersActivity" />
         <activity android:name=".ManagerActivity" />
-        <activity android:name=".MyProfileActivity"></activity>
+        <activity
+            android:name=".MyProfileActivity"
+            android:label="My Profile"
+            android:parentActivityName=".ScheduleActivity" />
+
+        <service android:name=".GPS_Service" />
+
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

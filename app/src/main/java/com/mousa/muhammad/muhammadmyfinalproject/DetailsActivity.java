@@ -28,6 +28,8 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         edtMonthlySalary=(EditText)findViewById(R.id .edtMonthlySalary) ;
         edtPricetoHour=(EditText)findViewById(R.id .edtPricetoHour) ;
         edtTotalHours=(EditText)findViewById(R.id .edtTotalHours) ;

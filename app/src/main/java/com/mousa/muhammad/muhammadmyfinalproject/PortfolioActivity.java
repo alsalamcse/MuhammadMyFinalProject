@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class PortfolioActivity extends AppCompatActivity {
 
-    DatabaseHelper MyDb;
+
 
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;//user
@@ -43,7 +43,7 @@ public class PortfolioActivity extends AppCompatActivity {
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        MyDb = new DatabaseHelper(this);
+
 
         edtFirstName = (EditText) findViewById(R.id.edtFirstName);
         edtLastName = (EditText) findViewById(R.id.edtLastName);

@@ -15,6 +15,18 @@
         tools:layout_editor_absoluteX="290dp"
         tools:layout_editor_absoluteY="0dp">
 
+        <Button
+            android:id="@+id/btngo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/spnMonth"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="13dp"
+            android:onClick="onClick"
+            android:text="Go"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="13dp" />
+
         <TextView
             android:id="@+id/tvSchedule"
             android:layout_width="wrap_content"
@@ -23,10 +35,11 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="5dp"
-            android:text="Schedule of work for this month"
+            android:text="Month Schedule"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#0489B1"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            tools:text="Month Schedule" />
 
         <Spinner
             android:id="@+id/spnMonth"
@@ -63,6 +76,7 @@
 
 
                 <TextView
+                    android:id="@+id/textView1"
                     android:layout_width="94dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
@@ -75,6 +89,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="99dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
@@ -84,6 +99,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="99dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
@@ -93,6 +109,7 @@
                     android:textSize="16sp" />
 
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:background="#A9D0F5"
                     android:gravity="center"
@@ -195,406 +212,8 @@
                     android:text="" />
             </TableRow>
 
-            <TableRow>
 
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row4"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row5"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row6"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row7"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row8"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row9"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row10"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row11"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row12"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row13"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row14"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row15"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row16"
-                    android:background="#D8D8D8"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-
-                <TextView
-                    android:id="@+id/col4row17"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="" />
-            </TableRow>
         </TableLayout>
-
-        <Button
-            android:id="@+id/btnMyProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/spnMonth"
-            android:text="My Profile"
-            tools:text="My Profile" />
 
 
     </RelativeLayout>

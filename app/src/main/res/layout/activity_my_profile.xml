@@ -131,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
+                android:text="Date Started Work:"
                 android:textSize="18sp"
                 tools:text="Date Started Work:" />
 

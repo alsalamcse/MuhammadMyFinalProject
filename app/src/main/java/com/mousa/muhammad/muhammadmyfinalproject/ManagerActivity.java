@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class ManagerActivity extends AppCompatActivity {
 
-    private Button btnAddWorker,btnSchedule,btnMyWorkers,btnMyProfile;
+    private Button btnAddWorker,btnSchedule,btnMyWorkers,btnMyProfile, btnMonthCoupon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +23,13 @@ public class ManagerActivity extends AppCompatActivity {
         btnMyProfile = (Button) findViewById(R.id.btnMyProfile);
         btnSchedule = (Button) findViewById(R.id.btnSchedule);
         btnMyWorkers = (Button) findViewById(R.id.btnMyWorkers);
+        btnMonthCoupon = (Button) findViewById(R.id.btnMonthCoupon);
+
 
         btnMyProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManagerActivity.this, PortfolioActivity.class);
+                Intent intent = new Intent(ManagerActivity.this, MyProfileActivity.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +41,13 @@ public class ManagerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        btnMyWorkers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManagerActivity.this, MyWorkersActivity.class);
+                startActivity(intent);
+            }
+        });
         btnAddWorker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,10 +56,10 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
 
-        btnMyWorkers.setOnClickListener(new View.OnClickListener() {
+        btnMonthCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManagerActivity.this, MyWorkersActivity.class);
+                Intent intent = new Intent(ManagerActivity.this, CouponActivity.class);
                 startActivity(intent);
             }
         });

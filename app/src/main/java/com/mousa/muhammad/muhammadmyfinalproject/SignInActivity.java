@@ -1,78 +1,49 @@
 package com.mousa.muhammad.muhammadmyfinalproject;
 
+import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class SignInActivity extends AppCompatActivity {
 
     private EditText edId, etPassWord;
-    private Button btnLogIN, btnLogOut;
+    private Button btnLogIN, btnService;
+    private TextView textView;
 
-    FirebaseAuth auth;//to establish sign in sign up
-    FirebaseUser user;//user
+    private BroadcastReceiver broadcastReceiver;
+
+//    FirebaseAuth auth;//to establish sign in sign up
+//    FirebaseUser user;//user
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
-//        init();
-
         edId = (EditText) findViewById(R.id.etId);
         etPassWord = (EditText) findViewById(R.id.edPassWord);
-
+        textView=(TextView)findViewById(R.id.textView);
+        btnService = (Button) findViewById(R.id.btnService);
         btnLogIN = (Button) findViewById(R.id.btnLogIn);
-        btnLogOut = (Button) findViewById(R.id.btnLogOut);
-
-//        btnLogOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // كود الانتقال إلى الشاشة الأخرى
-//                Intent i=new Intent(getApplicationContext(), SignUpActivity.class);
-//                startActivity(i);
-//            }
-//        });
-
-
-        btnLogOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                final AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-                builder.setMessage("Are you sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //add the time to the table
-
-
-                        SignInActivity.super.onBackPressed();
-                    }
-                });
-                builder.setNegativeButton("No", null).setCancelable(false);
-                AlertDialog alert = builder.create();
-                alert.show();
-
-            }
-        });
 
 
         btnLogIN.setOnClickListener(new View.OnClickListener() {
@@ -92,15 +63,86 @@ public class SignInActivity extends AppCompatActivity {
 
             }
         });
+
+        if(!runtime_permissions())
+            enable_buttons();
+    }
+    private void enable_buttons() {
+
+        btnService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),GPS_Service.class);
+                startService(i);
+            }
+        });
     }
 
+    private boolean runtime_permissions() {
+
+        if(Build.VERSION.SDK_INT >=23 &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!=
+                        PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!=
+                        PackageManager.PERMISSION_GRANTED )
+        {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION ,
+                    Manifest.permission.ACCESS_COARSE_LOCATION},100);
+
+            return true;
+        }
+        return false;
+    }
+
+    public void onRequestPermissionsResult(int requestCode,@NonNull String[] permissions,@NonNull int[]grantResults){
+        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
+        if(requestCode==100){
+            if(grantResults[0]==PackageManager.PERMISSION_GRANTED &&
+                    grantResults[1]==PackageManager.PERMISSION_GRANTED)
+                enable_buttons();
+            else
+                runtime_permissions();
+        }
+    }
+
+    protected void onResume(){
+        super.onResume();
+        if(broadcastReceiver==null)
+            broadcastReceiver=new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+
+                    textView.append("\n"+ intent.getExtras().get("coordinates"));
+                }
+            };
+        registerReceiver(broadcastReceiver,new IntentFilter("location_update"));
+    }
+
+    protected void onDestroy(){
+        super.onDestroy();
+        if(broadcastReceiver==null)
+            unregisterReceiver(broadcastReceiver);
+
+    }
+
+
+//function take the email and password that you insert and call the function SignIn
     private void dataHandler() {
         String id = edId.getText().toString();
         String passw = etPassWord.getText().toString();
-        signIn(id, passw);
+        if(id.length() < 6){
+            edId.setError("Invalid Email");
+        }else {
+            if (passw.length() < 6) {
+                etPassWord.setError("Invalid Password");
+            }else{
+                signIn(id, passw);
+            }
+        }
+
     }
 
-    //
+    //function to Sign in to app check email and password from the firebase if it Exists
     private void signIn(final String id, final String passw) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.signInWithEmailAndPassword(id, passw).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -108,7 +150,7 @@ public class SignInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
 
-                    Intent intent = new Intent(SignInActivity.this, ScheduleActivity.class);
+                    Intent intent = new Intent(SignInActivity.this, MainActivity.class);
 
                     if(id.equals("m@gmail.com")) {
                         Toast.makeText(SignInActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
@@ -145,65 +187,8 @@ public class SignInActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private String getDate() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
-
-    private String getDateTime() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-        Date date = new Date();
-        return dateFormat.format(date);
-    }
 }
 
-
-//    public void init() {
-//        TableLayout stk = (TableLayout) findViewById(R.id.table_main);
-//        TableRow tbrow0 = new TableRow(this);
-//        TextView tv0 = new TextView(this);
-//        tv0.setText(" Sl.No ");
-//        tv0.setTextColor(Color.WHITE);
-//        tbrow0.addView(tv0);
-//        TextView tv1 = new TextView(this);
-//        tv1.setText(" Product ");
-//        tv1.setTextColor(Color.WHITE);
-//        tbrow0.addView(tv1);
-//        TextView tv2 = new TextView(this);
-//        tv2.setText(" Unit Price ");
-//        tv2.setTextColor(Color.WHITE);
-//        tbrow0.addView(tv2);
-//        TextView tv3 = new TextView(this);
-//        tv3.setText(" Stock Remaining ");
-//        tv3.setTextColor(Color.WHITE);
-//        tbrow0.addView(tv3);
-//        stk.addView(tbrow0);
-//        for (int i = 0; i < 25; i++) {
-//            TableRow tbrow = new TableRow(this);
-//            TextView t1v = new TextView(this);
-//            t1v.setText("" + i);
-//            t1v.setTextColor(Color.WHITE);
-//            t1v.setGravity(Gravity.CENTER);
-//            tbrow.addView(t1v);
-//            TextView t2v = new TextView(this);
-//            t2v.setText("Product " + i);
-//            t2v.setTextColor(Color.WHITE);
-//            t2v.setGravity(Gravity.CENTER);
-//            tbrow.addView(t2v);
-//            TextView t3v = new TextView(this);
-//            t3v.setText("Rs." + i);
-//            t3v.setTextColor(Color.WHITE);
-//            t3v.setGravity(Gravity.CENTER);
-//            tbrow.addView(t3v);
-//            TextView t4v = new TextView(this);
-//            t4v.setText("" + i * 15 / 32 * 10);
-//            t4v.setTextColor(Color.WHITE);
-//            t4v.setGravity(Gravity.CENTER);
-//            tbrow.addView(t4v);
-//            stk.addView(tbrow);
-//        }
-//    }
 
 
 
