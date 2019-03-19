@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class PortfolioActivity extends AppCompatActivity {
+public class AddWorkerActivity extends AppCompatActivity {
 
 
 
@@ -67,7 +67,7 @@ public class PortfolioActivity extends AppCompatActivity {
         btnDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PortfolioActivity.this, DetailsActivity.class);
+                Intent intent = new Intent(AddWorkerActivity.this, DetailsActivity.class);
                 startActivity(intent);
             }
         });
@@ -129,7 +129,7 @@ public class PortfolioActivity extends AppCompatActivity {
 
         final String email = edtWorkerId.getText().toString() + "@mapp.com";
         auth.createUserWithEmailAndPassword(email, edtWorkerId.getText().toString())
-                .addOnCompleteListener(PortfolioActivity.this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(AddWorkerActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
@@ -142,12 +142,12 @@ public class PortfolioActivity extends AppCompatActivity {
                             databaseReference.child("Users:").child(id).child("dateStarted").setValue(edtStartedWork.getText().toString());
 
                             String toastLabel = "Authentication Successful." + "your email: " + email + "your password: " + edtWorkerId.getText().toString();
-                            Toast.makeText(PortfolioActivity.this,toastLabel , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddWorkerActivity.this,toastLabel , Toast.LENGTH_SHORT).show();
                             finish();
                         }
                         else
                         {
-                            Toast.makeText(PortfolioActivity.this, "Authentication failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddWorkerActivity.this, "Authentication failed."+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             task.getException().printStackTrace();
                         }
                     }

@@ -39,7 +39,7 @@
         </activity>
         <activity android:name=".SignInActivity" />
         <activity android:name=".ShowAllTasksActivity" />
-        <activity android:name=".PortfolioActivity" />
+        <activity android:name=".AddWorkerActivity" />
         <activity
             android:name=".DetailsActivity"
             android:label="My Details"

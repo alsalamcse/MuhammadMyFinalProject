@@ -51,7 +51,7 @@ public class ManagerActivity extends AppCompatActivity {
         btnAddWorker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManagerActivity.this, PortfolioActivity.class);
+                Intent intent = new Intent(ManagerActivity.this, AddWorkerActivity.class);
                 startActivity(intent);
             }
         });
