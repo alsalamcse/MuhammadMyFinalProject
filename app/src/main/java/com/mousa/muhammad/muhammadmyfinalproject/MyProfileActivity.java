@@ -64,9 +64,12 @@ public class MyProfileActivity extends AppCompatActivity {
                 tvWorkerId2.setText(dataSnapshot.child("workerId").getValue(String.class));
                 tvWorkerBirthday2.setText(dataSnapshot.child("birthday").getValue(String.class));
                 tvStartedWork2.setText(dataSnapshot.child("dateStarted").getValue(String.class));
+
                 Uri uri=Uri.parse(dataSnapshot.child("WorkerPicture").getValue(String.class));
                         //dataSnapshot.child("WorkerPicture").getValue(String.class)
-                ivWorkerPhoto.setImageURI(uri);
+                System.out.println(" The Uri : " + uri.toString());
+               ivWorkerPhoto.setImageURI(uri);
+
             }
 
             @Override
@@ -80,6 +83,20 @@ public class MyProfileActivity extends AppCompatActivity {
 //        Toast.makeText(MyProfileActivity.this,  databaseReference.child("Users:").child(id).child("firstName").getKey(), Toast.LENGTH_SHORT).show();
 
     }
+
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if(requestCode==PICK_IMAGE && resultCode== RESULT_OK && data != null
+//                && data.getData()!= null)
+//            uri=data.getData();
+//
+//        imageButton.setImageURI(uri);
+//
+//
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -54,6 +54,8 @@ public class AddWorkerActivity extends AppCompatActivity {
 
     Uri uri;
 
+    Uri uri_session;
+
     public static final int PICK_IMAGE = 1001;
 
 
@@ -131,8 +133,9 @@ public class AddWorkerActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Add the details to the profile worker and add the name to the listView
                 //of workers in MyWorkers Activity
-                dataHandler();
+
                 uploadProfilePicture();
+                dataHandler();
             }
         });
 
@@ -140,10 +143,9 @@ public class AddWorkerActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==PICK_IMAGE && resultCode== RESULT_OK && data != null
-                && data.getData()!= null)
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==PICK_IMAGE && resultCode== RESULT_OK && data != null && data.getData()!= null)
             uri=data.getData();
 
         imageButton.setImageURI(uri);
@@ -213,7 +215,7 @@ public class AddWorkerActivity extends AppCompatActivity {
      */
     private void creatAcount(final String firstName,final String lastName)
     {
-
+        System.out.println("Create Account");
         final String email = edtWorkerId.getText().toString() + "@mapp.com";
         auth.createUserWithEmailAndPassword(email, edtWorkerId.getText().toString())
                 .addOnCompleteListener(AddWorkerActivity.this, new OnCompleteListener<AuthResult>() {
@@ -228,8 +230,13 @@ public class AddWorkerActivity extends AppCompatActivity {
                             databaseReference.child("Users:").child(id).child("birthday").setValue(edtWorkerBirthday.getText().toString());
                             databaseReference.child("Users:").child(id).child("dateStarted").setValue(edtStartedWork.getText().toString());
                             databaseReference.child("Users:").child(id).child("HourPrice").setValue(edtPriceToHour.getText().toString());
-                            databaseReference.child("Users:").child(id).child("WorkerPicture").setValue(uri.toString());
 
+                            if(uri_session != null) {
+                                System.out.println("create Account , uri_session : " + uri_session.toString());
+                                databaseReference.child("Users:").child(id).child("WorkerPicture").setValue(uri_session.toString());
+                            }else{
+                                System.out.println("create Account , uri_session is null");
+                            }
 
                             Map<String,Object> map = new HashMap<>();
                             for(int i=1 ; i<13 ; i++){
@@ -237,13 +244,13 @@ public class AddWorkerActivity extends AppCompatActivity {
                             }
                             databaseReference.child("Users:").child(id).child("Months").updateChildren(map);
 
-                            storageReference.child("Users:").child(id).child("ProfilePicture.jpg");
-                            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                                }
-                            });
+//                            storageReference.child("Users:").child(id).child("ProfilePicture.jpg");
+//                            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                                @Override
+//                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                                                taskSnapshot.getUploadSessionUri();
+//                                }
+//                            });
 
                             String toastLabel = "Authentication Successful." + "your email: " + email + "your password: " + edtWorkerId.getText().toString();
                             Toast.makeText(AddWorkerActivity.this,toastLabel , Toast.LENGTH_SHORT).show();
@@ -274,6 +281,10 @@ public class AddWorkerActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 //                    progressBar3.setProgress(0);
+                    storageReference.getDownloadUrl();
+                    uri_session = taskSnapshot.getUploadSessionUri();
+                    System.out.println(" getUploadSessionUri : " + taskSnapshot.getUploadSessionUri());
+                    System.out.println(" getDownloadUrl : " + storageReference.getDownloadUrl());
                     Handler handler= new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
