@@ -14,6 +14,7 @@ import android.widget.SpinnerAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -50,7 +51,7 @@ public class ScheduleActivity extends AppCompatActivity{
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;//user
     private DatabaseReference databaseReference;
-
+    public int monthNumber= 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)   {
@@ -85,6 +86,7 @@ public class ScheduleActivity extends AppCompatActivity{
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
+        SpinnerMonth();
         Intent intent = getIntent();
         String value  =  intent.getStringExtra("MAIN_ACTIVITY");
         intent.removeExtra("MAIN_ACTIVITY");
@@ -93,18 +95,21 @@ public class ScheduleActivity extends AppCompatActivity{
             //onClick(R.id.btnStartWork);
             updateStartEnd(this.START_WORK);
             //col1row1.setText(getDate());
-        }
-        if(value != null && value.equals(this.END_WORK)){
+        }else {
+            if (value != null && value.equals(this.END_WORK)) {
 
-            updateStartEnd(this.END_WORK);
-            //col2row1.setText(getDateTime());
-        }
-        if(value != null && value.equals(this.MONTH_SCHEDULE)){
+                updateStartEnd(this.END_WORK);
+                //col2row1.setText(getDateTime());
+            }else{
+                if(value != null && value.equals(this.MONTH_SCHEDULE)){
 
-           // updateStartEnd(this.MONTH_SCHEDULE);
+                    updateStartEnd(this.MONTH_SCHEDULE);
+                }else{
+                    updateStartEnd(this.MONTH_SCHEDULE);
+                }
+            }
         }
-
-        SpinnerMonth();
+//        SpinnerMonth();
     }
 
 
@@ -162,7 +167,10 @@ public class ScheduleActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
                 String value = (String) spnMonth.getItemAtPosition(position);
-                //Toast.makeText(ScheduleActivity.this, "Month : " + value , Toast.LENGTH_LONG).show();
+                Toast.makeText(ScheduleActivity.this, "Month : " + value , Toast.LENGTH_LONG).show();
+                monthNumber=position;
+                System.out.println("Spinner :  " +  monthNumber);
+                showTable();
             }
 
             @Override
@@ -199,22 +207,29 @@ public class ScheduleActivity extends AppCompatActivity{
 
     public void showTable(){
 
-
         String id = user.getUid();
-        Date date = new Date();
-        DatabaseReference users = databaseReference.child("Users:").child(id).child("Months").child(""+(date.getMonth()+1));
+//        Date date = new Date();
 
+//        table.removeView(row1);
+//        table.removeViewAt(1);
+        table.removeAllViews();
+
+        System.out.println("Month Number : " + monthNumber);
+        if(monthNumber==0){
+            Toast.makeText(ScheduleActivity.this, "Month Error, Please choose month" , Toast.LENGTH_LONG).show();
+            return;
+        }
+        DatabaseReference users = databaseReference.child("Users:").child(id).child("Months").child("" + monthNumber);
         users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                row1=new TableRow(ScheduleActivity.this);
-                col1row1=new TextView(ScheduleActivity.this);
-                col2row1=new TextView(ScheduleActivity.this);
-                col3row1=new TextView(ScheduleActivity.this);
-                col4row1=new TextView(ScheduleActivity.this);
-
                 for (DataSnapshot it : dataSnapshot.getChildren()) {
+                    row1=new TableRow(ScheduleActivity.this);
+                    col1row1=new TextView(ScheduleActivity.this);
+                    col2row1=new TextView(ScheduleActivity.this);
+                    col3row1=new TextView(ScheduleActivity.this);
+                    col4row1=new TextView(ScheduleActivity.this);
                     System.out.println("Date under Month :  " + it.getKey());
 
                     SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
@@ -270,6 +285,8 @@ public class ScheduleActivity extends AppCompatActivity{
                     row1.addView(col4row1);
 
                     table.addView(row1);
+
+
                 }
             }
             @Override
@@ -329,7 +346,9 @@ public class ScheduleActivity extends AppCompatActivity{
 //    }
 }
 
-//    ////function to the button Back in phone asked you if you sure to Exit
+    //function to the button Back in phone asked you if you sure to Exit
+
+//
 //    public void onBackPressed(){
 //        final AlertDialog.Builder builder= new AlertDialog.Builder(ScheduleActivity.this);
 //        builder.setMessage("Really Exit?");

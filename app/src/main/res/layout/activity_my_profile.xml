@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyProfileActivity">
+    tools:context=".MyProfileActivity"
+    tools:layout_editor_absoluteY="73dp">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -12,10 +13,8 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,7 +26,7 @@
             <TextView
                 android:id="@+id/tvWorkerProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="43dp"
                 android:layout_marginLeft="100dp"
                 android:baselineAligned="false"
                 android:text="@string/worker_portfolio"
@@ -42,7 +41,7 @@
             <ImageView
                 android:id="@+id/ivWorkerPhoto"
                 android:layout_width="185dp"
-                android:layout_height="89dp"
+                android:layout_height="99dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:baselineAligned="false"
@@ -51,22 +50,26 @@
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/btn_star_big_on" />
+                app:srcCompat="@drawable/download231" />
 
             <TextView
                 android:id="@+id/tvFirstName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:text="First Name"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="18sp"
+                android:textStyle="bold"
+
                 tools:text="First Name:" />
+
 
             <TextView
                 android:id="@+id/tvFirstName2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="177dp"
+                android:layout_height="36dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:textSize="18sp" />
@@ -74,17 +77,19 @@
             <TextView
                 android:id="@+id/tvLastName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:text="Last Name:"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 tools:text="Last Name:" />
 
             <TextView
                 android:id="@+id/tvLastName2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="177dp"
+                android:layout_height="36dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:textSize="18sp" />
@@ -92,17 +97,19 @@
             <TextView
                 android:id="@+id/tvWorkerId"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:text="Worker Id"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 tools:text="Worker Id:" />
 
             <TextView
                 android:id="@+id/tvWorkerId2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="179dp"
+                android:layout_height="35dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:textSize="18sp" />
@@ -110,17 +117,19 @@
             <TextView
                 android:id="@+id/tvWorkerBirthday"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="39dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:text="Worker Birthday:"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 tools:text="Worker Birthday:" />
 
             <TextView
                 android:id="@+id/tvWorkerBirthday2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="179dp"
+                android:layout_height="35dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:textSize="18sp" />
@@ -128,32 +137,22 @@
             <TextView
                 android:id="@+id/tvStartedWork"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="37dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:text="Date Started Work:"
+                android:textColor="@android:color/holo_red_dark"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 tools:text="Date Started Work:" />
 
             <TextView
                 android:id="@+id/tvStartedWork2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="178dp"
+                android:layout_height="35dp"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"
                 android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2.5" />
-
-            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

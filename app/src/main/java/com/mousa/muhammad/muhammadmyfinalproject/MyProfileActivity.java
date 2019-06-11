@@ -1,11 +1,13 @@
 package com.mousa.muhammad.muhammadmyfinalproject;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +22,7 @@ public class MyProfileActivity extends AppCompatActivity {
 
     private TextView tvFirstName, tvWorkerId, tvWorkerBirthday, tvLastName, tvStartedWork;
     private TextView tvFirstName2, tvWorkerId2, tvWorkerBirthday2, tvLastName2, tvStartedWork2;
+    private ImageView ivWorkerPhoto;
     private DatabaseReference databaseReference;
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;
@@ -47,6 +50,8 @@ public class MyProfileActivity extends AppCompatActivity {
         tvWorkerBirthday2 = (TextView) findViewById(R.id.tvWorkerBirthday2);
         tvStartedWork2 = (TextView) findViewById(R.id.tvStartedWork2);
 
+        ivWorkerPhoto = (ImageView)findViewById(R.id.ivWorkerPhoto);
+
         final String id = user.getUid();
         DatabaseReference fname = databaseReference.child("Users:").child(id);
 
@@ -59,6 +64,9 @@ public class MyProfileActivity extends AppCompatActivity {
                 tvWorkerId2.setText(dataSnapshot.child("workerId").getValue(String.class));
                 tvWorkerBirthday2.setText(dataSnapshot.child("birthday").getValue(String.class));
                 tvStartedWork2.setText(dataSnapshot.child("dateStarted").getValue(String.class));
+                Uri uri=Uri.parse(dataSnapshot.child("WorkerPicture").getValue(String.class));
+                        //dataSnapshot.child("WorkerPicture").getValue(String.class)
+                ivWorkerPhoto.setImageURI(uri);
             }
 
             @Override

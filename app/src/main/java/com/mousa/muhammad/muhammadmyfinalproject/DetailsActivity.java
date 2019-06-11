@@ -9,20 +9,38 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class DetailsActivity extends AppCompatActivity {
-    private EditText edtTotalHours,edtPricetoHour,edtVactionDays2,edtWorkingDays2,edtMonthlySalary ;
-    private TextView tvDetailsMonth,tvTotalHours,tvPricetoHour,tvVactionDays2,tvWorkingDays2,tvMonthlySalary;
-    private Spinner spnMonthD;
+
+    private TextView tvDetailsMonth,tvTotalHours,tvPricetoHour,tvWorkingDays2,tvMonthlySalary
+                        ,tvTotalHours2,tvPricetoHour2,tvMonthlySalary2,tvWorkingDays3,tvMonth;
+    private Spinner spnMonth;
 
     private static String[] MONTHS1=new String[]
             {"Select Month","January","February","March","April","May","June","July",
                     "August","September","October","November","December" };
+
+    FirebaseAuth auth;//to establish sign in sign up
+    FirebaseUser user;//user
+    private DatabaseReference databaseReference;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,35 +48,111 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        edtMonthlySalary=(EditText)findViewById(R.id .edtMonthlySalary) ;
-        edtPricetoHour=(EditText)findViewById(R.id .edtPricetoHour) ;
-        edtTotalHours=(EditText)findViewById(R.id .edtTotalHours) ;
-        edtVactionDays2=(EditText)findViewById(R.id .edtVactionDays2) ;
-        edtWorkingDays2=(EditText)findViewById(R.id .edtWorkingDays2) ;
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
 
         tvDetailsMonth=(TextView)findViewById(R.id.tvDetailsMonth);
         tvTotalHours=(TextView)findViewById(R.id.tvTotalHours);
         tvPricetoHour=(TextView)findViewById(R.id.tvPricetoHour);
-        tvVactionDays2=(TextView)findViewById(R.id.tvVactionDays2);
         tvWorkingDays2=(TextView)findViewById(R.id.tvWorkingDays2);
         tvMonthlySalary=(TextView)findViewById(R.id.tvMonthlySalary);
+        tvMonth=(TextView)findViewById(R.id.tvMonth);
 
-        spnMonthD=(Spinner)findViewById(R.id.spnMonth);
+        tvMonthlySalary2=(TextView)findViewById(R.id.tvMonthlySalary2);
+        tvTotalHours2=(TextView)findViewById(R.id.tvTotalHours2);
+        tvPricetoHour2=(TextView)findViewById(R.id.tvPricetoHour2);
+        tvWorkingDays3=(TextView)findViewById(R.id.tvWorkingDays3);
+
+
+        spnMonth=(Spinner)findViewById(R.id.spnMonth);
+
+        showWorkerDetails();
+        SpinnerMonth1();
 
     }
 
+    public void showWorkerDetails(){
+        final String id = user.getUid();
 
+        DatabaseReference data = databaseReference.child("Users:").child(id);
+
+        data.addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                double price = Double.parseDouble(dataSnapshot.child("HourPrice").getValue().toString().trim());
+                Date date = new Date();
+                dataSnapshot =  dataSnapshot.child("Months").child(""+(date.getMonth()+1));
+                double totalHours=0 , totalDays=0;
+                for (DataSnapshot it : dataSnapshot.getChildren()) {
+                    System.out.println("Day :  " + it.getKey());
+
+                    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+
+                    Date startTime = null;
+                    try {
+                        if(it.child("StartTime").getValue(String.class) != null){
+                            startTime = format.parse(it.child("StartTime").getValue(String.class));
+                            System.out.println(" Start Time :  " +  format.format(startTime));
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    Date endTime = null;
+                    try {
+                        if(it.child("EndTime").getValue(String.class) !=null) {
+                            endTime = format.parse(it.child("EndTime").getValue(String.class));
+                            System.out.println(" End Time :  " +  format.format(endTime));
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+
+                    double res = 0;
+                    if(startTime != null && endTime != null) {
+                        double difference = (endTime.getTime() - startTime.getTime()) / 1000.0 / 60.0 / 60.0;
+                        long roundDiff = (long) (difference * 100.0);
+                        res = roundDiff / 100 + (roundDiff % 100) / 100.0;
+                        System.out.println("difference : " + difference);
+                        System.out.println("roundDiff : " + roundDiff);
+                        System.out.println(" roundDiff/100 : " + roundDiff / 100);
+                        System.out.println("(roundDiff%100)/100.0 : " + (roundDiff % 100) / 100.0);
+                        System.out.println("Time difference : " + res);
+                    }
+                    totalHours+=res;
+                    totalDays++;
+
+                }
+
+                System.out.println("Hour Price = " + price);
+                long roundPrice = (long)(totalHours * price * 100.0);
+                tvMonthlySalary2.setText( "  " + roundPrice/100.0);
+                tvTotalHours2.setText("  " + totalHours);
+                tvPricetoHour2.setText("  " + price);
+                tvWorkingDays3.setText("  " + totalDays);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     //function to spinner show name month in Toast when you select the month from the spinner
     public void SpinnerMonth1() {
-        SpinnerAdapter Adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, MONTHS1);
-        spnMonthD.setAdapter(Adapter);
-//        spnMonthD.setSelection(0);
-        spnMonthD.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        SpinnerAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, MONTHS1);
+        spnMonth.setAdapter(adapter);
+        spnMonth.setSelection(0);
+        spnMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
-                String value = (String) spnMonthD.getItemAtPosition(position);
-                Toast.makeText(DetailsActivity.this, "Month : " + value, Toast.LENGTH_LONG).show();
+              //  String value = (String) spnMonthD.getItemAtPosition(position);
+             //   Toast.makeText(DetailsActivity.this, "Month : " + value, Toast.LENGTH_LONG).show();
             }
 
             @Override

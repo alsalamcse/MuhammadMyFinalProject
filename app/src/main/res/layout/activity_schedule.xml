@@ -7,71 +7,66 @@
     tools:context=".ScheduleActivity">
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ThirdActivity"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="290dp"
-        tools:layout_editor_absoluteY="0dp">
-
-
-        <TextView
-            android:id="@+id/tvSchedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="5dp"
-            android:text="Month Schedule"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#0489B1"
-            android:textSize="25sp"
-            tools:text="Month Schedule" />
-
-        <LinearLayout
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
-
-        <Spinner
-            android:id="@+id/spnMonth"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:layout_below="@+id/tvSchedule"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="right" />
-
-        <TextView
-            android:id="@+id/tvMonth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/tvSchedule"
-            android:layout_gravity="left"
-            android:text="Month: "
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="24sp"
-            android:layout_alignParentRight="true" />
+            tools:context=".ThirdActivity"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="290dp"
+            tools:layout_editor_absoluteY="0dp">
 
 
-        <TableLayout
-            android:id="@+id/table"
-            android:layout_width="match_parent"
-            android:layout_height="437dp"
-            android:layout_below="@+id/tvMonth"
-            android:layout_marginTop="10dp"
-            android:stretchColumns="4">
+            <TextView
+                android:id="@+id/tvSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="5dp"
+                android:text="Month Schedule"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#0489B1"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:text="Month Schedule" />
+
+            <Spinner
+                android:id="@+id/spnMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_below="@+id/tvSchedule"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="right" />
+
+            <TextView
+                android:id="@+id/tvMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tvSchedule"
+                android:layout_gravity="left"
+                android:text="Month: "
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="24sp"
+                android:layout_alignParentRight="true" />
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/table"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="-74dp">
 
 
                 <TextView
@@ -89,7 +84,7 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="88dp"
+                    android:layout_width="89dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
                     android:padding="6dp"
@@ -99,7 +94,7 @@
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="94dp"
+                    android:layout_width="79dp"
                     android:background="#A9D0F5"
                     android:gravity="center"
                     android:padding="6dp"
@@ -109,7 +104,7 @@
 
                 <TextView
                     android:id="@+id/textView4"
-                    android:layout_width="105dp"
+                    android:layout_width="wrap_content"
                     android:background="#A9D0F5"
                     android:gravity="center"
                     android:padding="6dp"
@@ -118,40 +113,54 @@
                     android:textSize="16sp" />
             </TableRow>
 
-            <TableRow android:id="@+id/row1">
 
-                <TextView
-                    android:id="@+id/col1row1"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="23/2/2019" />
-
-                <TextView
-                    android:id="@+id/col2row1"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="8:00" />
-
-                <TextView
-                    android:id="@+id/col3row1"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="15:00" />
-
-                <TextView
-                    android:id="@+id/col4row1"
-                    android:background="#BDBDBD"
-                    android:gravity="center"
-                    android:padding="5dip"
-                    android:text="7" />
-            </TableRow>
+            <TableLayout
+                android:id="@+id/table"
+                android:layout_width="369dp"
+                android:layout_height="373dp"
+                android:layout_below="@+id/tvMonth"
+                android:layout_marginTop="74dp"
+                android:stretchColumns="4">
 
 
-        </TableLayout>
-    </RelativeLayout>
+                <TableRow android:id="@+id/row1">
+
+                    <TextView
+                        android:id="@+id/col1row1"
+                        android:layout_width="92dp"
+                        android:background="#BDBDBD"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="23/2/2019" />
+
+                    <TextView
+                        android:id="@+id/col2row1"
+                        android:layout_width="92dp"
+                        android:background="#BDBDBD"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="8:00" />
+
+                    <TextView
+                        android:id="@+id/col3row1"
+                        android:layout_width="88dp"
+                        android:background="#BDBDBD"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="15:00" />
+
+                    <TextView
+                        android:id="@+id/col4row1"
+                        android:layout_width="108dp"
+                        android:background="#BDBDBD"
+                        android:gravity="center"
+                        android:padding="5dip"
+                        android:text="7" />
+                </TableRow>
+
+
+            </TableLayout>
+        </RelativeLayout>
 
     </ScrollView>
 

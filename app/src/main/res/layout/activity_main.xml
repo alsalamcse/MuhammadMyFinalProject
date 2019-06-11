@@ -6,60 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="3dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="3dp"
-        android:orientation="horizontal"
+    <Button
+        android:id="@+id/btnStartWork"
+        android:layout_width="165dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="60dp"
+        android:text="Start Work"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnEndWork"
+        app:layout_constraintEnd_toEndOf="@+id/btnEndWork"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnEndWork"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEndWork"
+        android:layout_width="165dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="32dp"
+        android:text="End Work"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnMonthSchedule"
+        app:layout_constraintStart_toStartOf="@+id/btnMonthSchedule"
+        app:layout_constraintTop_toBottomOf="@+id/btnStartWork" />
+
+    <Button
+        android:id="@+id/btnMonthSchedule"
+        android:layout_width="165dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="32dp"
+        android:text="Month Schedule"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogOut"
+        app:layout_constraintStart_toStartOf="@+id/btnLogOut"
+        app:layout_constraintTop_toBottomOf="@+id/btnEndWork" />
+
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="165dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
+        android:text="Log Out"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btnStartWork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Start Work"
-                tools:layout_editor_absoluteX="160dp"
-                tools:layout_editor_absoluteY="16dp" />
-
-            <Button
-                android:id="@+id/btnEndWork"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="End Work"
-                tools:layout_editor_absoluteX="160dp"
-                tools:layout_editor_absoluteY="71dp" />
-
-            <Button
-                android:id="@+id/btnMonthSchedule"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Month Schedule"
-                tools:layout_editor_absoluteX="143dp"
-                tools:layout_editor_absoluteY="119dp" />
-
-            <Button
-                android:id="@+id/btnLogOut"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Log Out"
-                tools:layout_editor_absoluteX="170dp"
-                tools:layout_editor_absoluteY="167dp" />
-        </LinearLayout>
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/btnMonthSchedule" />
 
 </android.support.constraint.ConstraintLayout>

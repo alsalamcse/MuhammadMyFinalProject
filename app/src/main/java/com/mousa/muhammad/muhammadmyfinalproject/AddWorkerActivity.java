@@ -1,38 +1,63 @@
 package com.mousa.muhammad.muhammadmyfinalproject;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ *
+ */
 public class AddWorkerActivity extends AppCompatActivity {
 
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;//user
     private DatabaseReference databaseReference;
+    private StorageReference storageReference;
 
-    private EditText edtFirstName, edtWorkerId, edtWorkerBirthday, edtLastName, edtStartedWork;
-    private TextView tvWorkerPortfolio, tvFirstName, tvWorkerId, tvWorkerBirthday, tvLastName, tvStartedWork;
-    private ImageView ivWorker;
-    private Button btnDetails, btnSave;
+
+    private EditText edtFirstName, edtWorkerId, edtWorkerBirthday, edtLastName, edtStartedWork,edtPriceToHour;
+    private TextView tvWorkerPortfolio, tvFirstName, tvWorkerId, tvWorkerBirthday, tvLastName, tvStartedWork, tvPriceToHour;
+    //private ImageView ivWorker;
+    private ImageButton imageButton;
+    private Button btnChooseProfilePicture, btnSave;
+    private ProgressBar progressBar3;
+
+    Uri uri;
+
+    public static final int PICK_IMAGE = 1001;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +67,7 @@ public class AddWorkerActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
+        storageReference = FirebaseStorage.getInstance().getReference();
 
 
         edtFirstName = (EditText) findViewById(R.id.edtFirstName);
@@ -50,6 +75,7 @@ public class AddWorkerActivity extends AppCompatActivity {
         edtWorkerId = (EditText) findViewById(R.id.edtWorkerId);
         edtWorkerBirthday = (EditText) findViewById(R.id.edtWorkerBirthday);
         edtStartedWork = (EditText) findViewById(R.id.edtStartedWork);
+        edtPriceToHour = (EditText) findViewById(R.id.edtPriceToHour);
 
         tvWorkerPortfolio = (TextView) findViewById(R.id.tvWorkerPortfolio);
         tvFirstName = (TextView) findViewById(R.id.tvFirstName);
@@ -57,33 +83,85 @@ public class AddWorkerActivity extends AppCompatActivity {
         tvWorkerId = (TextView) findViewById(R.id.tvWorkerId);
         tvWorkerBirthday = (TextView) findViewById(R.id.tvWorkerBirthday);
         tvStartedWork = (TextView) findViewById(R.id.tvStartedWork);
+        tvPriceToHour = (TextView) findViewById(R.id.tvPriceToHour);
 
-        ivWorker = (ImageView) findViewById(R.id.ivWorker);
+        //ivWorker = (ImageView) findViewById(R.id.ivWorker);
+        imageButton=(ImageButton)findViewById(R.id.imageButton);
 
-        btnDetails = (Button) findViewById(R.id.btnDetails);
+        progressBar3=(ProgressBar)findViewById(R.id.progressBar3);
+
+        btnChooseProfilePicture = (Button) findViewById(R.id.btnChooseProfilePicture);
         btnSave = (Button) findViewById(R.id.btnSave);
 
 
-        btnDetails.setOnClickListener(new View.OnClickListener() {
+        btnChooseProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AddWorkerActivity.this, DetailsActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                openfilechoseer();
+
             }
         });
+
+
+
+
+
+
+
+
+//        btnChooseProfilePicture.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+//                startActivityForResult(gallery, AddWorkerActivity.PICK_IMAGE);
+//                System.out.println("gallery uri :  " + gallery.toUri(Intent.URI_ALLOW_UNSAFE));
+//                System.out.println("gallery data :  " + gallery.getData());
+//                uri = Uri.fromFile(new File(gallery.getData().toString()));
+//                ivWorker.setImageURI(uri);
+//                System.out.println("URI 1 : " + uri.toString());
+//                uri = gallery.getData();
+//                ivWorker.setImageURI(Uri.parse(gallery.toUri(Intent.URI_ALLOW_UNSAFE).toString()));
+//                ivWorker.setImageResource(R.drawable.common_full_open_on_phone);
+//                System.out.println("URI 2 : "  + uri.toString());
+//
+//            }
+//        });
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Add the details to the profile worker and add the name to the listView
                 //of workers in MyWorkers Activity
                 dataHandler();
+                uploadProfilePicture();
             }
         });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==PICK_IMAGE && resultCode== RESULT_OK && data != null
+                && data.getData()!= null)
+            uri=data.getData();
+
+        imageButton.setImageURI(uri);
 
 
     }
 
+    private void openfilechoseer(){
+        Intent intent= new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,PICK_IMAGE);
+    }
 
+
+    /**
+     *
+     */
     private void dataHandler() {
         boolean isok = true;//if all the fields filled well
         String FirstName = edtFirstName.getText().toString();
@@ -91,8 +169,17 @@ public class AddWorkerActivity extends AppCompatActivity {
         String WorkerId = edtWorkerId.getText().toString();
         String WorkerBirthday = edtWorkerBirthday.getText().toString();
         String StartDate = edtStartedWork.getText().toString();
+        String HourPrice = edtPriceToHour.getText().toString();
+
+
         if (FirstName.length() < 3 ) {
             edtFirstName.setError("Wrong Name");
+            isok = false;
+        }
+        try{
+            Double price = Double.parseDouble(HourPrice.trim());
+        }catch (Exception e){
+            edtPriceToHour.setError("Wrong Hour price");
             isok = false;
         }
         if (LastName.length() < 3) {
@@ -140,11 +227,23 @@ public class AddWorkerActivity extends AppCompatActivity {
                             databaseReference.child("Users:").child(id).child("workerId").setValue(edtWorkerId.getText().toString());
                             databaseReference.child("Users:").child(id).child("birthday").setValue(edtWorkerBirthday.getText().toString());
                             databaseReference.child("Users:").child(id).child("dateStarted").setValue(edtStartedWork.getText().toString());
+                            databaseReference.child("Users:").child(id).child("HourPrice").setValue(edtPriceToHour.getText().toString());
+                            databaseReference.child("Users:").child(id).child("WorkerPicture").setValue(uri.toString());
+
+
                             Map<String,Object> map = new HashMap<>();
                             for(int i=1 ; i<13 ; i++){
                                 map.put(""+i,"");
                             }
                             databaseReference.child("Users:").child(id).child("Months").updateChildren(map);
+
+                            storageReference.child("Users:").child(id).child("ProfilePicture.jpg");
+                            storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                }
+                            });
 
                             String toastLabel = "Authentication Successful." + "your email: " + email + "your password: " + edtWorkerId.getText().toString();
                             Toast.makeText(AddWorkerActivity.this,toastLabel , Toast.LENGTH_SHORT).show();
@@ -157,6 +256,60 @@ public class AddWorkerActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private String getfileExtenion(Uri uri){
+        ContentResolver contentResolver= getContentResolver();
+        MimeTypeMap mime= MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(contentResolver.getType(uri));
+    }
+
+    private void uploadProfilePicture(){
+
+        if(uri != null){
+
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis()+"." +
+            getfileExtenion(uri));
+            fileReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                    progressBar3.setProgress(0);
+                    Handler handler= new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar3.setProgress(0);
+                        }
+                    },500);
+
+                    Toast.makeText(AddWorkerActivity.this,"Upload Successful",Toast.LENGTH_SHORT).show();
+//                    UploadTask upload= new UploadTask(edtFirstName.getText().toString().trim(),
+//                            taskSnapshot.getUploadSessionUri().toString());
+//                    String uploadId = databaseReference.push().getKey();
+//                    databaseReference.child(uploadId).setValue(upload);
+
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+
+                    Toast.makeText(AddWorkerActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                    double progress=(100.0* taskSnapshot.getBytesTransferred() /
+                    taskSnapshot.getTotalByteCount());
+                    progressBar3.setProgress((int) progress);
+
+                }
+            });
+
+        }else {
+            Toast.makeText(this,"No File Selected", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

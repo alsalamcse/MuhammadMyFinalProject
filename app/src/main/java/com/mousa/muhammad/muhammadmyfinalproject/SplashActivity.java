@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class SplashActivity extends AppCompatActivity {
 
     private TextView tvWelcome;
-    private ImageView ivWelcome;
+    private ImageView imageView2;
 
 
     @Override
@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ivWelcome=(ImageView)findViewById(R.id.ivWelcome);
+        imageView2=(ImageView)findViewById(R.id.imageView2);
         tvWelcome=(TextView) findViewById(R.id .tvWelcome) ;
     }
     @Override

@@ -6,38 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".CouponActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tvMonthCoupon"
+        android:layout_width="wrap_content"
+        android:layout_height="56dp"
+        android:layout_gravity="left"
+        android:layout_marginBottom="46dp"
+        android:text="Month Coupon"
+        android:textColor="#0489B1"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ivMonthCoupon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <ImageButton
+        android:id="@+id/ivMonthCoupon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnDownloadCoupon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMonthCoupon"
+        app:srcCompat="@android:drawable/star_big_on" />
 
-            <TextView
-                android:id="@+id/tvMonthCoupon"
-                android:layout_width="wrap_content"
-                android:layout_height="77dp"
-                android:text="Month Coupon"
-                android:textColor="#0489B1"
-                android:layout_marginLeft="100dp"
-                android:layout_gravity="left"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+    <Button
+        android:id="@+id/btnDownloadCoupon"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="108dp"
+        android:text="Download Month Coupon"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivMonthCoupon" />
 
-            <ImageButton
-                android:id="@+id/ivMonthCoupon"
-                android:layout_width="match_parent"
-                android:layout_height="255dp"
-                app:srcCompat="@android:drawable/star_big_on" />
-
-            <Button
-                android:id="@+id/btnDownloadCoupon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Download Month Coupon" />
-        </LinearLayout>
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

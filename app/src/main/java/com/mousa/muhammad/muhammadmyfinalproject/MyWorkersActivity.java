@@ -24,7 +24,6 @@ public class MyWorkersActivity extends AppCompatActivity {
 
 //    private Adapter adapter;
 //    public static String[] NAMES;
-
     // private ISpecimenDIO specimenDIO;
 
     private DatabaseReference databaseReference;
@@ -52,9 +51,6 @@ public class MyWorkersActivity extends AppCompatActivity {
 //        list_view.setAdapter(adapter);
 
     }
-
-
-
        // listView();
 
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -113,10 +109,6 @@ public class MyWorkersActivity extends AppCompatActivity {
 
                 }
             });
-
-
-
-
 
 
             list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {

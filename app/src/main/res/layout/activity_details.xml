@@ -6,137 +6,121 @@
     android:layout_height="match_parent"
     tools:context=".DetailsActivity">
 
-    <Spinner
-        android:id="@+id/spnMonth1"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="259dp"
-        tools:layout_editor_absoluteY="36dp"
-        tools:ignore="MissingConstraints" />
-
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvDetailsMonth"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="70dp"
+                android:gravity="left"
+                android:text="Details of the Month"
+                android:textColor="#0489B1"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Details of the month" />
 
-                    <TextView
-                        android:id="@+id/tvDetailsMonth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="70dp"
-                        android:layout_gravity="left"
-                        android:gravity="left"
-                        android:text="Details of the Month"
-                        android:textColor="#0489B1"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        tools:text="Details of the month" />
+            <TextView
+                android:id="@+id/tvMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="left"
+                android:layout_marginLeft="0dp"
+                android:text="Month : "
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Month : " />
 
-                        <TextView
-                            android:id="@+id/tvTotalHours"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:text="Total Hours:"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:textSize="18sp"
-                            tools:text="Total Hours:" />
+            <Spinner
+                android:id="@+id/spnMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="94dp"
+                tools:layout_editor_absoluteY="50dp" />
 
-                        <EditText
-                            android:id="@+id/edtTotalHours"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint="Total Hours"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/tvTotalHours"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="left"
+                android:layout_marginLeft="0dp"
+                android:text="Total Hours:"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Total Hours:" />
 
-                        <TextView
-                            android:id="@+id/tvPricetoHour"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Price To Hour:"
-                            android:textSize="18sp"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            tools:text=" Price To Hour:" />
+            <TextView
+                android:id="@+id/tvTotalHours2"
+                android:layout_width="150dp"
+                android:layout_height="30dp" />
 
-                        <EditText
-                            android:id="@+id/edtPricetoHour"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:hint="Price to Hour"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/tvPricetoHour"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="0dp"
+                android:text="Price To Hour:"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text=" Price To Hour:" />
 
-                        <TextView
-                            android:id="@+id/tvVactionDays2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Vaction Days:"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:textSize="18sp"
-                            tools:text="Vaction Days:" />
+            <TextView
+                android:id="@+id/tvPricetoHour2"
+                android:layout_width="150dp"
+                android:layout_height="30dp" />
 
-                        <EditText
-                            android:id="@+id/edtVactionDays2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:hint="Vaction Days"
-                            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/tvWorkingDays2"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="0dp"
+                android:text="Working Days:"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Working Days:" />
 
-                        <TextView
-                            android:id="@+id/tvWorkingDays2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Working Days:"
-                            android:textSize="18sp"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            tools:text="Working Days:" />
+            <TextView
+                android:id="@+id/tvWorkingDays3"
+                android:layout_width="150dp"
+                android:layout_height="30dp" />
 
-                        <EditText
-                            android:id="@+id/edtWorkingDays2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:hint="Working Days"
-                            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/tvMonthlySalary"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="0dp"
+                android:text="Expected Monthly Salary :"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/tvMonthlySalary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:text="Expected Monthly Salary :"
-                            android:textSize="18sp" />
-
-                        <EditText
-                            android:id="@+id/edtMonthlySalary"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:layout_marginLeft="0dp"
-                            android:layout_gravity="left"
-                            android:hint="Expected Monthly Salary "
-                            android:inputType="textPersonName" />
-
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tvMonthlySalary2"
+                android:layout_width="150dp"
+                android:layout_height="30dp" />
         </LinearLayout>
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
