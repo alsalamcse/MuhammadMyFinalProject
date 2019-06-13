@@ -11,24 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CouponActivity extends AppCompatActivity {
-
     private TextView tvMonthCoupon;
     private ImageView ivMonthCoupon;
     private Button btnDownloadCoupon;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         tvMonthCoupon=(TextView) findViewById(R.id .tvMonthCoupon) ;
         btnDownloadCoupon=(Button)findViewById(R.id.btnDownloadCoupon);
         ivMonthCoupon=(ImageView)findViewById(R.id.ivMonthCoupon);
-
-
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

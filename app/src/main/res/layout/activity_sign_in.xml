@@ -65,16 +65,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edPassWord" />
 
-
-    <!--<Button-->
-    <!--android:id="@+id/btnService"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="Service" />-->
-
-    <!--<TextView-->
-    <!--android:id="@+id/textView"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="67dp" />-->
-
 </android.support.constraint.ConstraintLayout>

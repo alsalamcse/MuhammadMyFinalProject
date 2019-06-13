@@ -4,27 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManagerActivity">
+    tools:context=".ManagerActivity"
+    tools:layout_editor_absoluteY="73dp">
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/tvSchedule"
+        android:layout_gravity="left"
+        android:layout_marginBottom="33dp"
+        android:layout_marginTop="52dp"
+        android:text="Start Work"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Start Work" />
+
+    <Button
+        android:id="@+id/btnEnd"
+        android:layout_width="150dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/tvSchedule"
+        android:layout_gravity="left"
+        android:layout_marginBottom="29dp"
+        android:text="End Work"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnSchedule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnStart"
+        tools:text="End Work" />
 
     <Button
         android:id="@+id/btnSchedule"
         android:layout_width="150dp"
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
-        android:layout_marginTop="60dp"
         android:text="Schedule"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/btnMyWorkers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/btnEnd" />
 
     <Button
         android:id="@+id/btnMyWorkers"
         android:layout_width="150dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="39dp"
         android:text="My Workers"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
@@ -39,48 +72,16 @@
         android:layout_height="0dp"
         android:layout_below="@+id/tvSchedule"
         android:layout_gravity="left"
-        android:layout_marginBottom="32dp"
-        android:layout_toEndOf="@+id/btnMyProfile"
-        android:layout_toRightOf="@+id/btnMyProfile"
+        android:layout_marginBottom="62dp"
+        android:layout_toEndOf="@+id/btnEnd"
+        android:layout_toRightOf="@+id/btnEnd"
         android:text="Add Worker"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnMyProfile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMyWorkers"
-        tools:text="Add Worker" />
-
-    <Button
-        android:id="@+id/btnMyProfile"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        android:layout_below="@+id/tvSchedule"
-        android:layout_gravity="left"
-        android:layout_marginBottom="32dp"
-        android:text="My Profile"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnMonthCoupon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAddWorker"
-        tools:text="My Profile" />
-
-    <Button
-        android:id="@+id/btnMonthCoupon"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        android:layout_below="@+id/tvSchedule"
-        android:layout_gravity="left"
-        android:layout_marginBottom="60dp"
-        android:text="Month Coupon"
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMyProfile"
-        tools:text="Month Coupon" />
+        app:layout_constraintTop_toBottomOf="@+id/btnMyWorkers"
+        tools:text="Add Worker" />
 
 </android.support.constraint.ConstraintLayout>

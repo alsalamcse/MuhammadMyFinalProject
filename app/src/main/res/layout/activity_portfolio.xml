@@ -49,20 +49,6 @@
                     android:layout_height="154dp"
                     app:srcCompat="@drawable/download231" />
 
-                <!--<ImageView-->
-                <!--android:id="@+id/ivWorker"-->
-                <!--android:layout_width="185dp"-->
-                <!--android:layout_height="89dp"-->
-                <!--android:layout_gravity="left"-->
-                <!--android:layout_marginLeft="0dp"-->
-                <!--android:baselineAligned="false"-->
-                <!--android:contentDescription="@string/todo"-->
-                <!--app:layout_constraintBottom_toTopOf="parent"-->
-                <!--app:layout_constraintEnd_toStartOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent"-->
-                <!--app:srcCompat="@drawable/download231" />-->
-
                 <ProgressBar
                     android:id="@+id/progressBar3"
                     style="?android:attr/progressBarStyle"

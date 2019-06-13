@@ -35,7 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
     private static String[] MONTHS1=new String[]
             {"Select Month","January","February","March","April","May","June","July",
                     "August","September","October","November","December" };
-
+    private int spinnerMonthNumber = 0;
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;//user
     private DatabaseReference databaseReference;
@@ -47,28 +47,21 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
-
         tvDetailsMonth=(TextView)findViewById(R.id.tvDetailsMonth);
         tvTotalHours=(TextView)findViewById(R.id.tvTotalHours);
         tvPricetoHour=(TextView)findViewById(R.id.tvPricetoHour);
         tvWorkingDays2=(TextView)findViewById(R.id.tvWorkingDays2);
         tvMonthlySalary=(TextView)findViewById(R.id.tvMonthlySalary);
         tvMonth=(TextView)findViewById(R.id.tvMonth);
-
         tvMonthlySalary2=(TextView)findViewById(R.id.tvMonthlySalary2);
         tvTotalHours2=(TextView)findViewById(R.id.tvTotalHours2);
         tvPricetoHour2=(TextView)findViewById(R.id.tvPricetoHour2);
         tvWorkingDays3=(TextView)findViewById(R.id.tvWorkingDays3);
-
-
         spnMonth=(Spinner)findViewById(R.id.spnMonth);
-
+        //
         showWorkerDetails();
         SpinnerMonth1();
 
@@ -76,66 +69,60 @@ public class DetailsActivity extends AppCompatActivity {
 
     public void showWorkerDetails(){
         final String id = user.getUid();
-
         DatabaseReference data = databaseReference.child("Users:").child(id);
-
         data.addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 double price = Double.parseDouble(dataSnapshot.child("HourPrice").getValue().toString().trim());
                 Date date = new Date();
-                dataSnapshot =  dataSnapshot.child("Months").child(""+(date.getMonth()+1));
-                double totalHours=0 , totalDays=0;
-                for (DataSnapshot it : dataSnapshot.getChildren()) {
-                    System.out.println("Day :  " + it.getKey());
-
-                    SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-
-                    Date startTime = null;
-                    try {
-                        if(it.child("StartTime").getValue(String.class) != null){
-                            startTime = format.parse(it.child("StartTime").getValue(String.class));
-                            System.out.println(" Start Time :  " +  format.format(startTime));
+                if(spinnerMonthNumber != 0 ) {
+                    dataSnapshot = dataSnapshot.child("Months").child("" + spinnerMonthNumber);
+                    double totalHours = 0, totalDays = 0;
+                    for (DataSnapshot it : dataSnapshot.getChildren()) {
+                        System.out.println("Day :  " + it.getKey());
+                        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+                        Date startTime = null;
+                        try {
+                            if (it.child("StartTime").getValue(String.class) != null) {
+                                startTime = format.parse(it.child("StartTime").getValue(String.class));
+                                System.out.println(" Start Time :  " + format.format(startTime));
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                         }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    Date endTime = null;
-                    try {
-                        if(it.child("EndTime").getValue(String.class) !=null) {
-                            endTime = format.parse(it.child("EndTime").getValue(String.class));
-                            System.out.println(" End Time :  " +  format.format(endTime));
+                        Date endTime = null;
+                        try {
+                            if (it.child("EndTime").getValue(String.class) != null) {
+                                endTime = format.parse(it.child("EndTime").getValue(String.class));
+                                System.out.println(" End Time :  " + format.format(endTime));
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
                         }
-                    } catch (ParseException e) {
-                        e.printStackTrace();
+
+                        double res = 0;
+                        if (startTime != null && endTime != null) {
+                            double difference = (endTime.getTime() - startTime.getTime()) / 1000.0 / 60.0 / 60.0;
+                            long roundDiff = (long) (difference * 100.0);
+                            res = roundDiff / 100 + (roundDiff % 100) / 100.0;
+                            System.out.println("difference : " + difference);
+                            System.out.println("roundDiff : " + roundDiff);
+                            System.out.println(" roundDiff/100 : " + roundDiff / 100);
+                            System.out.println("(roundDiff%100)/100.0 : " + (roundDiff % 100) / 100.0);
+                            System.out.println("Time difference : " + res);
+                        }
+                        totalHours += res;
+                        totalDays++;
                     }
 
-                    double res = 0;
-                    if(startTime != null && endTime != null) {
-                        double difference = (endTime.getTime() - startTime.getTime()) / 1000.0 / 60.0 / 60.0;
-                        long roundDiff = (long) (difference * 100.0);
-                        res = roundDiff / 100 + (roundDiff % 100) / 100.0;
-                        System.out.println("difference : " + difference);
-                        System.out.println("roundDiff : " + roundDiff);
-                        System.out.println(" roundDiff/100 : " + roundDiff / 100);
-                        System.out.println("(roundDiff%100)/100.0 : " + (roundDiff % 100) / 100.0);
-                        System.out.println("Time difference : " + res);
-                    }
-                    totalHours+=res;
-                    totalDays++;
-
+                    System.out.println("Hour Price = " + price);
+                    long roundPrice = (long) (totalHours * price * 100.0);
+                    tvMonthlySalary2.setText("  " + roundPrice / 100.0);
+                    tvTotalHours2.setText("  " + totalHours);
+                    tvPricetoHour2.setText("  " + price);
+                    tvWorkingDays3.setText("  " + totalDays);
                 }
-
-                System.out.println("Hour Price = " + price);
-                long roundPrice = (long)(totalHours * price * 100.0);
-                tvMonthlySalary2.setText( "  " + roundPrice/100.0);
-                tvTotalHours2.setText("  " + totalHours);
-                tvPricetoHour2.setText("  " + price);
-                tvWorkingDays3.setText("  " + totalDays);
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -151,19 +138,17 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view,
                                        int position, long id) {
-              //  String value = (String) spnMonthD.getItemAtPosition(position);
-             //   Toast.makeText(DetailsActivity.this, "Month : " + value, Toast.LENGTH_LONG).show();
+                spinnerMonthNumber = position;
+                showWorkerDetails();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-//                Toast.makeText(ScheduleActivity.this,"Select Month",Toast.LENGTH_LONG).show();
 
             }
         });
     }
-
-        @Override
+            @Override
         public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater= getMenuInflater();
         inflater.inflate(R.menu.main_menu,menu);

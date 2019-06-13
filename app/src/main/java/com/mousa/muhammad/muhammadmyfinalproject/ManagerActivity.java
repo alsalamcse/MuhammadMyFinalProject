@@ -7,30 +7,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class ManagerActivity extends AppCompatActivity {
 
-    private Button btnAddWorker,btnSchedule,btnMyWorkers,btnMyProfile, btnMonthCoupon;
-
+    private Button btnAddWorker,btnSchedule,btnMyWorkers,btnStart, btnEnd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager);
-
-//        onBackPressed();
-
         btnAddWorker = (Button) findViewById(R.id.btnAddWorker);
-        btnMyProfile = (Button) findViewById(R.id.btnMyProfile);
+        btnStart = (Button) findViewById(R.id.btnStart);
         btnSchedule = (Button) findViewById(R.id.btnSchedule);
         btnMyWorkers = (Button) findViewById(R.id.btnMyWorkers);
-        btnMonthCoupon = (Button) findViewById(R.id.btnMonthCoupon);
+        btnEnd = (Button) findViewById(R.id.btnEnd);
 
-
-        btnMyProfile.setOnClickListener(new View.OnClickListener() {
+        btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManagerActivity.this, MyProfileActivity.class);
-                startActivity(intent);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(ManagerActivity.this);
+                builder.setMessage("Are you sure?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(ManagerActivity.this,"Work Started",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ManagerActivity.this, ScheduleActivity.class);
+                        intent.putExtra("MAIN_ACTIVITY","START_WORK");
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", null).setCancelable(false);
+                AlertDialog alert = builder.create();
+                alert.show();
+
             }
         });
 
@@ -56,15 +65,26 @@ public class ManagerActivity extends AppCompatActivity {
             }
         });
 
-        btnMonthCoupon.setOnClickListener(new View.OnClickListener() {
+        btnEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ManagerActivity.this, CouponActivity.class);
-                startActivity(intent);
+                final AlertDialog.Builder builder = new AlertDialog.Builder(ManagerActivity.this);
+                builder.setMessage("Are you sure?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(ManagerActivity.this,"Work Ended",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ManagerActivity.this, ScheduleActivity.class);
+                        intent.putExtra("MAIN_ACTIVITY","END_WORK");
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", null).setCancelable(false);
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
-
-
     }
     ////function to the button Back in phone asked you if you sure to Exit
     public void onBackPressed() {

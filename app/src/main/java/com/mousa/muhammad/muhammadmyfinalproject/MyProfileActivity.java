@@ -17,39 +17,34 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class MyProfileActivity extends AppCompatActivity {
-
     private TextView tvFirstName, tvWorkerId, tvWorkerBirthday, tvLastName, tvStartedWork;
     private TextView tvFirstName2, tvWorkerId2, tvWorkerBirthday2, tvLastName2, tvStartedWork2;
     private ImageView ivWorkerPhoto;
     private DatabaseReference databaseReference;
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
-
         tvFirstName = (TextView) findViewById(R.id.tvFirstName);
         tvLastName = (TextView) findViewById(R.id.tvLastName);
         tvWorkerId = (TextView) findViewById(R.id.tvWorkerId);
         tvWorkerBirthday = (TextView) findViewById(R.id.tvWorkerBirthday);
         tvStartedWork = (TextView) findViewById(R.id.tvStartedWork);
-
         tvFirstName2 = (TextView) findViewById(R.id.tvFirstName2);
         tvLastName2 = (TextView) findViewById(R.id.tvLastName2);
         tvWorkerId2 = (TextView) findViewById(R.id.tvWorkerId2);
         tvWorkerBirthday2 = (TextView) findViewById(R.id.tvWorkerBirthday2);
         tvStartedWork2 = (TextView) findViewById(R.id.tvStartedWork2);
-
         ivWorkerPhoto = (ImageView)findViewById(R.id.ivWorkerPhoto);
 
         final String id = user.getUid();
@@ -66,37 +61,15 @@ public class MyProfileActivity extends AppCompatActivity {
                 tvStartedWork2.setText(dataSnapshot.child("dateStarted").getValue(String.class));
 
                 Uri uri=Uri.parse(dataSnapshot.child("WorkerPicture").getValue(String.class));
-                        //dataSnapshot.child("WorkerPicture").getValue(String.class)
                 System.out.println(" The Uri : " + uri.toString());
                ivWorkerPhoto.setImageURI(uri);
-
+                Picasso.with(MyProfileActivity.this).load(uri.getPath().toString()).into(ivWorkerPhoto);
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
             }
         });
-
-//        tvFirstName2.setText( databaseReference.child("Users:").child(id).child("firstName").);
-//        tvLastName2.setText( databaseReference.child("Users:").child(id).child("firstName").getParent().toString());
-//        Toast.makeText(MyProfileActivity.this,  databaseReference.child("Users:").child(id).child("firstName").getKey(), Toast.LENGTH_SHORT).show();
-
     }
-
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if(requestCode==PICK_IMAGE && resultCode== RESULT_OK && data != null
-//                && data.getData()!= null)
-//            uri=data.getData();
-//
-//        imageButton.setImageURI(uri);
-//
-//
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,7 +77,6 @@ public class MyProfileActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu,menu);
         return true;
     }
-
     //Options to intent to all the activities- MyProflie, MyDetails,Coupon.
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -121,10 +93,8 @@ public class MyProfileActivity extends AppCompatActivity {
                 Intent intent3=new Intent(this,CouponActivity.class);
                 startActivity(intent3);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 }

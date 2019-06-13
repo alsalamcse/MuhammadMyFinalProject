@@ -1,10 +1,7 @@
 package com.mousa.muhammad.muhammadmyfinalproject;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
@@ -21,108 +18,23 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity {
-
     private EditText edId, etPassWord;
     private Button btnLogIN, btnService;
     private TextView textView,textView5;
-
-    private BroadcastReceiver broadcastReceiver;
-
-//    FirebaseAuth auth;//to establish sign in sign up
-//    FirebaseUser user;//user
-
-    @Override
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         edId = (EditText) findViewById(R.id.etId);
         etPassWord = (EditText) findViewById(R.id.edPassWord);
-       // textView=(TextView)findViewById(R.id.textView);
         textView5=(TextView)findViewById(R.id.textView5);
-      //  btnService = (Button) findViewById(R.id.btnService);
         btnLogIN = (Button) findViewById(R.id.btnLogIn);
-
-
         btnLogIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {dataHandler();}
-//                final AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
-//                builder.setMessage("Are you sure?");
-//                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//                    }
-//                });
-//                builder.setNegativeButton("No", null).setCancelable(false);
-//                AlertDialog alert = builder.create();
-//                alert.show();
-//            }
+
         });
     }
-
-//        if(!runtime_permissions())
-//            enable_buttons();
-//    }
-//    private void enable_buttons() {
-//
-//        btnService.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(getApplicationContext(),GPS_Service.class);
-//                startService(i);
-//            }
-//        });
-
-//
-//    private boolean runtime_permissions() {
-//
-//        if(Build.VERSION.SDK_INT >=23 &&
-//                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!=
-//                        PackageManager.PERMISSION_GRANTED &&
-//                ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION)!=
-//                        PackageManager.PERMISSION_GRANTED )
-//        {
-//            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION ,
-//                    Manifest.permission.ACCESS_COARSE_LOCATION},100);
-//
-//            return true;
-//        }
-//        return false;
-//    }
-//
-//    public void onRequestPermissionsResult(int requestCode,@NonNull String[] permissions,@NonNull int[]grantResults){
-//        super.onRequestPermissionsResult(requestCode,permissions,grantResults);
-//        if(requestCode==100){
-//            if(grantResults[0]==PackageManager.PERMISSION_GRANTED &&
-//                    grantResults[1]==PackageManager.PERMISSION_GRANTED)
-//                enable_buttons();
-//            else
-//                runtime_permissions();
-//        }
-//    }
-
-    protected void onResume(){
-        super.onResume();
-        if(broadcastReceiver==null)
-            broadcastReceiver=new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-
-                    textView.append("\n"+ intent.getExtras().get("coordinates"));
-                }
-            };
-        registerReceiver(broadcastReceiver,new IntentFilter("location_update"));
-    }
-
-    protected void onDestroy(){
-        super.onDestroy();
-        if(broadcastReceiver==null)
-            unregisterReceiver(broadcastReceiver);
-
-    }
-
-
 //function take the email and password that you insert and call the function SignIn
     private void dataHandler() {
         String id = edId.getText().toString();
@@ -136,9 +48,7 @@ public class SignInActivity extends AppCompatActivity {
                 signIn(id, passw);
             }
         }
-
     }
-
     //function to Sign in to app check email and password from the firebase if it Exists
     private void signIn(final String id, final String passw) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -150,7 +60,7 @@ public class SignInActivity extends AppCompatActivity {
                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                     Toast.makeText(SignInActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
 
-                    if(id.equals("m@gmail.com")) {
+                    if(id.equals("m@gmail.com")|| id.equals("0545982719@mapp.com")) {
                         Toast.makeText(SignInActivity.this, "signIn Successful.", Toast.LENGTH_SHORT).show();
                         intent = new Intent(SignInActivity.this, ManagerActivity.class);
                     }
@@ -163,7 +73,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
     }
-
     ////function to the button Back in phone asked you if you sure to Exit
     public void onBackPressed() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(SignInActivity.this);
@@ -184,14 +93,5 @@ public class SignInActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-
 }
-
-
-
-
-
-
-
-
 

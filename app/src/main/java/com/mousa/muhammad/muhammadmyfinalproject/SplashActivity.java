@@ -7,11 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
-
     private TextView tvWelcome;
     private ImageView imageView2;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +23,10 @@ public class SplashActivity extends AppCompatActivity {
         myThread.start();
         super.onResume();
     }
-
     public  class MyThread extends Thread
     {
         @Override
         public void run() {
-
             try {
                 sleep(3000);
                 Intent i=new Intent(getApplicationContext(),SignInActivity.class);
