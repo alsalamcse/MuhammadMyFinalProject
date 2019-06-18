@@ -128,10 +128,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2=new Intent(this,DetailsActivity.class);
                 startActivity(intent2);
                 return true;
-            case R.id.Coupon:
-                Intent intent3=new Intent(this,CouponActivity.class);
-                startActivity(intent3);
-                return true;
                 default:
                 return super.onOptionsItemSelected(item);
         }

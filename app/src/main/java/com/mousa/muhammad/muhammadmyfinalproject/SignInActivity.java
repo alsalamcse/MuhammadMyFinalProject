@@ -19,8 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity {
     private EditText edId, etPassWord;
-    private Button btnLogIN, btnService;
-    private TextView textView,textView5;
+    private Button btnLogIN;
+    private TextView textView5;
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

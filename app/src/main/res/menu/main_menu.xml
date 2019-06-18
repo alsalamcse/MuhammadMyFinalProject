@@ -12,10 +12,6 @@
         android:title="My Details"
         app:showAsAction="never"/>
 
-    <item
-        android:id="@+id/Coupon"
-        android:title="Month Coupon"
-        app:showAsAction="never"/>
 
 
 

@@ -1,7 +1,6 @@
 package com.mousa.muhammad.muhammadmyfinalproject;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -17,13 +16,15 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class MyProfileActivity extends AppCompatActivity {
     private TextView tvFirstName, tvWorkerId, tvWorkerBirthday, tvLastName, tvStartedWork;
     private TextView tvFirstName2, tvWorkerId2, tvWorkerBirthday2, tvLastName2, tvStartedWork2;
     private ImageView ivWorkerPhoto;
     private DatabaseReference databaseReference;
+    private StorageReference storageReference;
     FirebaseAuth auth;//to establish sign in sign up
     FirebaseUser user;
     @Override
@@ -35,6 +36,8 @@ public class MyProfileActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
+
         tvFirstName = (TextView) findViewById(R.id.tvFirstName);
         tvLastName = (TextView) findViewById(R.id.tvLastName);
         tvWorkerId = (TextView) findViewById(R.id.tvWorkerId);
@@ -60,10 +63,13 @@ public class MyProfileActivity extends AppCompatActivity {
                 tvWorkerBirthday2.setText(dataSnapshot.child("birthday").getValue(String.class));
                 tvStartedWork2.setText(dataSnapshot.child("dateStarted").getValue(String.class));
 
-                Uri uri=Uri.parse(dataSnapshot.child("WorkerPicture").getValue(String.class));
-                System.out.println(" The Uri : " + uri.toString());
-               ivWorkerPhoto.setImageURI(uri);
-                Picasso.with(MyProfileActivity.this).load(uri.getPath().toString()).into(ivWorkerPhoto);
+//                Uri uri=Uri.parse(dataSnapshot.child("WorkerPicture").getValue(String.class));
+//                System.out.println(" The Uri : " + uri.toString());
+//               ivWorkerPhoto.setImageURI(uri);
+//                System.out.println(" storageReference download URL : " +  storageReference.child(dataSnapshot.child("WorkerPicture").getValue(String.class)).getDownloadUrl());
+//                System.out.println(" database child : " + dataSnapshot.child("WorkerPicture").getValue(String.class));
+//                Picasso.get().load(dataSnapshot.child("WorkerPicture").getValue(String.class)).into(ivWorkerPhoto);
+               // Picasso.get().load("https://firebasestorage.googleapis.com/v0/b/muhammadmyfinalproject.appspot.com/o/1560876798422.jpg?alt=media&token=da0689c1-ddbb-44bf-9c07-c91e8a781cc3").into(ivWorkerPhoto);
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -88,10 +94,6 @@ public class MyProfileActivity extends AppCompatActivity {
             case R.id.Details:
                 Intent intent2=new Intent(this,DetailsActivity.class);
                 startActivity(intent2);
-                return true;
-            case R.id.Coupon:
-                Intent intent3=new Intent(this,CouponActivity.class);
-                startActivity(intent3);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
